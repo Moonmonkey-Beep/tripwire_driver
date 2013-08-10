@@ -54,7 +54,7 @@ def laseroff():
 ## NEED TO CHECK FOR DARKNESS ON FIRST RUN AND LAUNCH CALIBRATION MODE
 
 playchirps = 1
-playsound("sudo aplay -q /home/pi/laser/sounds/warmup.wav");
+playsound("sudo aplay -q /opt/ninja/drivers/tripwire_driver/sounds/warmup.wav");
 laseron(); # turn laser on pin #17
 Alertlevel = 10000 ## set the base level very high for the first run to prevent false alarms
 
@@ -69,7 +69,7 @@ while True:
 
 
     if (playchirps > 0): ## makes sure sound is only played once
-        playsound("sudo aplay -q /home/pi/laser/sounds/chirps.wav");
+        playsound("sudo aplay -q /opt/ninja/drivers/tripwire_driver/sounds/chirps.wav");
         playchirps = playchirps - 1
         
         
@@ -81,15 +81,15 @@ while True:
         print "1"
   
         
-        playsound("sudo aplay -q /home/pi/laser/sounds/detected.wav");
+        playsound("sudo aplay -q /opt/ninja/drivers/tripwire_driver/sounds/detected.wav");
         #laseroff()
 
     else:
        if ( GPIO.input(23) == False ):
             #print "button pressed"
-            playsound("sudo aplay -q /home/pi/laser/sounds/button.wav");
+            playsound("sudo aplay -q /opt/ninja/drivers/tripwire_driver/sounds/button.wav");
             laseroff()
-            playsound("sudo aplay -q /home/pi/laser/sounds/deactivated.wav");
-            bashCommand = "sudo python /home/pi/laser/StartSYSTEM.py" 
+            playsound("sudo aplay -q /opt/ninja/drivers/tripwire_driver/sounds/deactivated.wav");
+            bashCommand = "sudo python /opt/ninja/drivers/tripwire_driver/python/StartSYSTEM.py" 
             ## launch start system
             os.system(bashCommand) 

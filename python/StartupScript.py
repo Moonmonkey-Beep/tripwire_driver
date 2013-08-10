@@ -7,6 +7,6 @@ GPIO.setmode(GPIO.BCM)
 
 #####################################MAIN####################################### 
 print "running StartupScript"
-bashCommand = "sudo python /home/pi/laser/StartSYSTEM.py"
+bashCommand = "sudo python /opt/ninja/drivers/tripwire_driver/python/StartSYSTEM.py"
 os.system(bashCommand) 
 
