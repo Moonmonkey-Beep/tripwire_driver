@@ -48,7 +48,6 @@ def standbymode():
 		print "def standbymode"
 	#flashled(1.5); ## This is when waiting button press to arm system
 		if ( GPIO.input(23) == False ):
-	    	print "button pressed"
 	    	playsound("sudo aplay -q /opt/ninja/drivers/tripwire_driver/sounds/button.wav");       
 		   	armtripwire()
 		else:
