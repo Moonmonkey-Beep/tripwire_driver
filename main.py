@@ -4,6 +4,12 @@
 import RPi.GPIO as GPIO, time, os
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(23, GPIO.IN)
+
+import pickle
+
+
+
+
 # Standard setup ends
 
 def RCtime (RCpin): ## Setup LDR detection
@@ -66,9 +72,11 @@ def armtripwire():
 	
 	
 	    if (Alarmcount > 0):
+	    	pickle.dump( Alarmcount, open( "save.p", "wb" ) )
 	    	print Alarmcount
 	    	Alarmcount = Alarmcount - 1
 	    else:
+	    	pickle.dump( "0", open( "save.p", "wb" ) )
 	    	print "0"
 	    
 	    	
