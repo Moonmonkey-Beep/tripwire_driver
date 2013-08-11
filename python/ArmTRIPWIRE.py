@@ -57,7 +57,7 @@ playchirps = 1
 playsound("sudo aplay -q /opt/ninja/drivers/tripwire_driver/sounds/warmup.wav");
 laseron(); # turn laser on pin #17
 Alertlevel = 10000 ## set the base level very high for the first run to prevent false alarms
-Alarmcount = 10 ## how many times to play the alarm when triggered (makes sure Ninja Cloud detects it)
+Alarmcount = 0 ## how many times to play the alarm when triggered (makes sure Ninja Cloud detects it)
 
 while True:
 
@@ -81,6 +81,7 @@ while True:
         
         # this is when intruder is detected
         #flashled(.1);  
+        Alarmcount = 10 ## how many times to play the alarm when triggered (makes sure Ninja Cloud detects it)
         if (Alarmcount > 0):
         	print Alarmcount
         	Alarmcount = Alarmcount - 1
