@@ -48,6 +48,4 @@ def s_load(file_obj):
 number = 100
 
 
-
-lst = ... big list of data you want to save to disk ...
 sPickle.s_dump(number, open('lst.spkl', 'wb'))
