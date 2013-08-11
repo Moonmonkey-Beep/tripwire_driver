@@ -58,12 +58,12 @@ while True: ## this quickly pulses the laser and checks if a signal is recieved 
  
     if (RCtime(18) < 1001): ## signal detected
         laseroff(); # turn laser off pin #17
-        bashCommand = "sudo python /home/pi/laser/StandbyMode.py" ## launch standby
+        bashCommand = "sudo python /opt/ninja/drivers/tripwire_driver/python/StandbyMode.py" ## launch standby
         os.system(bashCommand) 
         
     elif (RCtime(18) >1000):## no signal
         laseroff(); # turn laser off pin #17
-        bashCommand = "sudo python /home/pi/laser/AlignTRIPWIRE.py" ## launch align helper
+        bashCommand = "sudo python /opt/ninja/drivers/tripwire_driver/python/AlignTRIPWIRE.py" ## launch align helper
         os.system(bashCommand) 
 
     
