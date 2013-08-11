@@ -1,10 +1,29 @@
-  #!/usr/bin/env python
+#!/usr/bin/env python
 
 # Example for RC timing reading for Raspberry Pi
 # Must be used with GPIO 0.3.1a or later - earlier verions
 # are not fast enough!
 
 import RPi.GPIO as GPIO, time, os      
+
+
+
+
+import RPi.GPIO as GPIO, time, os
+GPIO.setmode(GPIO.BCM)
+
+
+# define function playing sound - file defined in call
+def laseron():
+    GPIO.setup(17, GPIO.OUT) ##Setup Laser
+    GPIO.output(17, True) ## Laser on
+   
+   
+   
+# call function
+
+laseron();
+
 
 DEBUG = 1
 GPIO.setmode(GPIO.BCM)
@@ -21,15 +40,5 @@ def RCtime (RCpin):
                 reading += 1
         return reading
 
-##################################ACTIVE#####################################
-
-## THE LOWER THE LIGHT CONDITIONS, THE HIGHER THE READING FROM THE PHOTOCELL
-## PLAN TO MAKE THE ALERT LEVEL ADAPTIVE (TWICE AS MUCH DARKNESS AS LAST LIGHT LEVEL INSTEAD OF A FIXED NUMBER)
-## ALSO SHOULD HAVE DIFFERENT TRIGGER WHEN LIGHT LEVEL INCREASES DRASTICLY - BUT NEED TO CALIBRATE TO AVOICE BEING TRIGGERED BY LIGHT SWITCHES
-## NEED TO CHECK FOR DARKNESS ON FIRST RUN AND LAUNCH CALIBRATION MODE
-
-
-while True:
-		Lightlevel = RCtime(18)
-
-    
+while True:                                     
+        print RCtime(18)     # Read RC timing using pin #18
