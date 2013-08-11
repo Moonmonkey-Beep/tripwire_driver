@@ -13,7 +13,7 @@ def RCtime (RCpin): ## Setup LDR detection
         reading = 0
         GPIO.setup(RCpin, GPIO.OUT)
         GPIO.output(RCpin, GPIO.LOW)
-        time.sleep(0.05)
+        time.sleep(0.05) ## this is the speed it runs - needs to be fast to detect quick movements
  
         GPIO.setup(RCpin, GPIO.IN)
         # This takes about 1 millisecond per loop cycle
@@ -57,7 +57,7 @@ playchirps = 1
 playsound("sudo aplay -q /opt/ninja/drivers/tripwire_driver/sounds/warmup.wav");
 laseron(); # turn laser on pin #17
 Alertlevel = 10000 ## set the base level very high for the first run to prevent false alarms
-Alarmcount = 0 ## how many times to play the alarm when triggered (makes sure Ninja Cloud detects it)
+
 
 while True:
 
