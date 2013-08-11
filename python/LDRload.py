@@ -22,5 +22,8 @@ def RCtime (RCpin):
         return reading
 
 if True:                                     
-        lightlevel = RCtime(18)   # Read RC timing using pin #18
-	print lightlevel
+        # Load the dictionary back from the pickle file.
+        import pickle
+        
+        favorite_color = pickle.load( open( "save.p", "rb" ) )
+        # favorite_color is now { "lion": "yellow", "kitty": "red" }	print lightlevel
