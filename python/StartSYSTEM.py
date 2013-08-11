@@ -45,7 +45,7 @@ def laseroff():
     
 def standbymode():
 	while True:
-		print "def standbymode"
+
 	#flashled(1.5); ## This is when waiting button press to arm system
 		if ( GPIO.input(23) == False ):
 			playsound("sudo aplay -q /opt/ninja/drivers/tripwire_driver/sounds/button.wav");       
