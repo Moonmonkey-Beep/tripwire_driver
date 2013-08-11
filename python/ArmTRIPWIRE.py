@@ -68,8 +68,10 @@ while True:
     if (Alarmcount > 0):
     	print Alarmcount
     	Alarmcount = Alarmcount - 1
+    else:
+    	print "0"
     
-
+    	
        
     Alertlevel = 2000 ## this is the ammount of darkness which triggers the alarm
 
