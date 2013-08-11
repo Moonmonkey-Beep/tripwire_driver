@@ -167,7 +167,12 @@ while True: ## this quickly pulses the laser and checks if a signal is recieved 
 
         
         while True:
-        	standbymode()
+        	if ( GPIO.input(23) == False ):
+        		    #print "button pressed"
+        		    playsound("sudo aplay -q /opt/ninja/drivers/tripwire_driver/sounds/button.wav");
+        	
+        		        
+        		    armtripwire()
                     
                 
     elif (RCtime(18) >1000):## no signal ALIGN LASER
