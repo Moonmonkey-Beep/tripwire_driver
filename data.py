@@ -1,7 +1,5 @@
 import pickle
 
-while True:                                     
-                                  
-        number = pickle.load( open( "save.p", "wb" ) )
-        print number
+number = pickle.load( open( "save.p", "wb" ) )
+print number
       	
