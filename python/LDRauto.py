@@ -31,6 +31,5 @@ def RCtime (RCpin):
 
 while True:
 		Lightlevel = RCtime(18)
-	print lightlevel
 
     
