@@ -1,11 +1,9 @@
 try:
-  from cPickle import dumps, loads
-except ImportError:
-  from pickle import dumps, loads
+	import pickle
 
 
-while True:                                     
+	while True:                                     
                                   
-        number = pickle.load( open( "save.p", "wb" ) )
-        print number
+        	number = pickle.load( open( "save.p", "wb" ) )
+        	print number
       	
