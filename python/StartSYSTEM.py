@@ -3,7 +3,7 @@
 # Standard setup starts
 import RPi.GPIO as GPIO, time, os
 GPIO.setmode(GPIO.BCM)
-
+GPIO.setup(23, GPIO.IN)
 # Standard setup ends
 
 def RCtime (RCpin): ## Setup LDR detection
@@ -43,6 +43,10 @@ def laseroff():
     GPIO.setup(17, GPIO.OUT) ##Setup Laser
     GPIO.output(17, False) ## Laser on
     
+    
+    
+    
+# define function  
 def AlignLaser(): # align laser
 	
 	laseroff()
@@ -63,7 +67,7 @@ def AlignLaser(): # align laser
 	            if (RCtime(18) < 200): ## a good signal
 	                playsound("sudo aplay -q /opt/ninja/drivers/tripwire_driver/sounds/beephigh.wav");
 	                #flashled(.15);
-	                rightcount = rightcount - 30
+	                rightcount = rightcount - 30 ## this number denotes a strong signal
 	                print rightcount
 	       
 	            elif (RCtime(18) < 300):## a medium signal
@@ -101,16 +105,27 @@ while True: ## this quickly pulses the laser and checks if a signal is recieved 
     
     # delare variable
  
-    if (RCtime(18) < 1001): ## signal detected
-        laseroff(); # turn laser off pin #17
-        bashCommand = "sudo python /opt/ninja/drivers/tripwire_driver/python/StandbyMode.py" ## launch standby
-        os.system(bashCommand) 
-        
-    elif (RCtime(18) >1000):## no signal
-    	AlignLaser()
-        #laseroff(); # turn laser off pin #17
-        #bashCommand = "sudo python /opt/ninja/drivers/tripwire_driver/python/AlignTRIPWIRE.py" ## launch align helper
-        #os.system(bashCommand) 
+    if (RCtime(18) < 1001): ## signal detected STANDBY MODE
+        laseroff(); # turn laser off 
 
+        playsound("sudo aplay -q /opt/ninja/drivers/tripwire_driver/sounds/ready.wav");
+        
+        while True:
+        
+            #flashled(1.5); ## This is when waiting button press to arm system
+            if ( GPIO.input(23) == False ):
+                #print "button pressed"
+                playsound("sudo aplay -q /opt/ninja/drivers/tripwire_driver/sounds/button.wav");
+                #time.sleep(1)## wait 1 second so sound can play
+                #GPIO.output(22, False) # Turn LED off
+                #exit(0) # quit app - can't use as later commands are not passed
+                    
+                bashCommand = "sudo python /opt/ninja/drivers/tripwire_driver/python/ArmTRIPWIRE.py" ## launch align helper
+                os.system(bashCommand) 
+        
+                
+    elif (RCtime(18) >1000):## no signal ALIGHN LASER
+    	AlignLaser() ## calls align laser function (at the top)
+       
     
     
