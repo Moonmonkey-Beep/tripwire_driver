@@ -57,7 +57,7 @@ def laseroff():
 while True:
 
 
-    Lightlevel = RCtime(18)
+	Lightlevel = RCtime(18)
 	print lightlevel
 
     
