@@ -71,7 +71,7 @@ def armtripwire():
 	
 	
 	    if (Alarmcount > 0):
-	    	pickle.dump( Alarmcount, open( "save.p", "rb" ) )
+	    	pickle.dump( Alarmcount, open( "save.p", "wb" ) )
 	    	print Alarmcount
 	    	Alarmcount = Alarmcount - 1
 	    else:
