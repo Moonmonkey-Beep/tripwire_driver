@@ -71,7 +71,7 @@ while True:
     else:
     	print "0"
     
-    	
+    
        
     Alertlevel = 2000 ## this is the ammount of darkness which triggers the alarm
 
@@ -87,9 +87,9 @@ while True:
         # this is when intruder is detected
         #flashled(.1);  
         Alarmcount = 10 ## how many times to play the alarm when triggered (makes sure Ninja Cloud detects it)
-        if (Alarmcount > 0):
-        	print Alarmcount
-        	Alarmcount = Alarmcount - 1
+
+        print Alarmcount
+
   
         
         #playsound("sudo aplay -q /opt/ninja/drivers/tripwire_driver/sounds/detected.wav");
