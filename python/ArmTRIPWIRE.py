@@ -13,7 +13,7 @@ def RCtime (RCpin): ## Setup LDR detection
         reading = 0
         GPIO.setup(RCpin, GPIO.OUT)
         GPIO.output(RCpin, GPIO.LOW)
-        time.sleep(0.05) ## this is the speed it runs - needs to be fast to detect quick movements
+        time.sleep(0.05)
  
         GPIO.setup(RCpin, GPIO.IN)
         # This takes about 1 millisecond per loop cycle
@@ -57,7 +57,7 @@ playchirps = 1
 playsound("sudo aplay -q /opt/ninja/drivers/tripwire_driver/sounds/warmup.wav");
 laseron(); # turn laser on pin #17
 Alertlevel = 10000 ## set the base level very high for the first run to prevent false alarms
-
+Alarmcount = 0 ## how many times to play the alarm when triggered (makes sure Ninja Cloud detects it)
 
 while True:
 
@@ -71,7 +71,7 @@ while True:
     else:
     	print "0"
     
-    
+    	
        
     Alertlevel = 2000 ## this is the ammount of darkness which triggers the alarm
 
@@ -87,9 +87,9 @@ while True:
         # this is when intruder is detected
         #flashled(.1);  
         Alarmcount = 10 ## how many times to play the alarm when triggered (makes sure Ninja Cloud detects it)
-
-        print Alarmcount
-
+        if (Alarmcount > 0):
+        	print Alarmcount
+        	Alarmcount = Alarmcount - 1
   
         
         #playsound("sudo aplay -q /opt/ninja/drivers/tripwire_driver/sounds/detected.wav");
@@ -103,4 +103,4 @@ while True:
             playsound("sudo aplay -q /opt/ninja/drivers/tripwire_driver/sounds/deactivated.wav");
             bashCommand = "sudo python /opt/ninja/drivers/tripwire_driver/python/StartSYSTEM.py" 
             ## launch start system
-            os.system(bashCommand) 
+            os.system(bashCommand)
