@@ -124,19 +124,19 @@ def AlignLaser(): # align lasers
 	                playsound("sudo aplay -q /opt/ninja/drivers/tripwire_driver/sounds/beephigh.wav");
 	                #flashled(.15);
 	                rightcount = rightcount - 30 ## this number denotes a strong signal
-	                print rightcount
+	                #print rightcount
 	       
 	            elif (RCtime(18) < 300):## a medium signal
 	                playsound("sudo aplay -q /opt/ninja/drivers/tripwire_driver/sounds/beepmed.wav");
 	                #flashled(.20);
 	                rightcount = rightcount - 20
-	                print rightcount
+	                #print rightcount
 	                
 	   
 	            elif (RCtime(18) < 500):## a poor signal
 	                playsound("sudo aplay -q /opt/ninja/drivers/tripwire_driver/sounds/beeplow.wav");
 	                rightcount = rightcount - 5
-	                print rightcount
+	                #print rightcount
 	                
 	            #elif (RCtime(18) > 1000):## no signal
 	                #flashled(.25);               
