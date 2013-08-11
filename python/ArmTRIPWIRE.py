@@ -65,7 +65,10 @@ while True:
     Lightlevel = RCtime(18)
 
 
-    print Alarmcount
+    if (Alarmcount > 0):
+    	print Alarmcount
+    	Alarmcount = Alarmcount - 1
+    
 
        
     Alertlevel = 2000 ## this is the ammount of darkness which triggers the alarm
