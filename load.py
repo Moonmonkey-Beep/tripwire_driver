@@ -76,3 +76,5 @@ if __name__ == "__main__":
 number = sPickle.s_load(open('save.p'))
 
 print number
+print number
+print number
