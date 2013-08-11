@@ -1,0 +1,5 @@
+This is the README for the Tripwire_driver
+
+install into /opt/ninja/drivers/
+
+git clone git://github.com/moonmonkey/tripwire_driver.git
