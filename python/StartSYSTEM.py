@@ -102,7 +102,7 @@ def armtripwire():
 	            playsound("sudo aplay -q /opt/ninja/drivers/tripwire_driver/sounds/button.wav");
 	            laseroff()
 	            playsound("sudo aplay -q /opt/ninja/drivers/tripwire_driver/sounds/deactivated.wav");
-	            standbymode():
+	            standbymode()
     
 # define function  
 def AlignLaser(): # align laser
