@@ -47,14 +47,14 @@ def laseroff():
 #####################################MAIN####################################### 
 laseroff()
 playchirps = 1
-playsound("sudo aplay -q /opt/ninja/drivers/tripwire_driver/sounds/setup.wav");
-playsound("sudo aplay -q /opt/ninja/drivers/tripwire_driver/sounds/warmup.wav");
+playsound("sudo aplay -q /home/pi/laser/sounds/setup.wav");
+playsound("sudo aplay -q /home/pi/laser/sounds/warmup.wav");
 
 rightcount = 100 # this is how long it takes laser to align
 while True:
     laseron(); # turn laser on pin #17
     if (playchirps > 0): ## makes sure sound is only played once
-        playsound("sudo aplay -q /opt/ninja/drivers/tripwire_driver/sounds/align_instruction.wav");
+        playsound("sudo aplay -q /home/pi/laser/sounds/align_instruction.wav");
         playchirps = playchirps - 1
 
     
@@ -63,20 +63,20 @@ while True:
     if (rightcount > 1):
             
             if (RCtime(18) < 200): ## a good signal
-                playsound("sudo aplay -q /opt/ninja/drivers/tripwire_driver/sounds/beephigh.wav");
+                playsound("sudo aplay -q /home/pi/laser/sounds/beephigh.wav");
                 #flashled(.15);
                 rightcount = rightcount - 30
                 print rightcount
        
             elif (RCtime(18) < 300):## a medium signal
-                playsound("sudo aplay -q /opt/ninja/drivers/tripwire_driver/sounds/beepmed.wav");
+                playsound("sudo aplay -q /home/pi/laser/sounds/beepmed.wav");
                 #flashled(.20);
                 rightcount = rightcount - 20
                 print rightcount
                 
    
             elif (RCtime(18) < 500):## a poor signal
-                playsound("sudo aplay -q /opt/ninja/drivers/tripwire_driver/sounds/beeplow.wav");
+                playsound("sudo aplay -q /home/pi/laser/sounds/beeplow.wav");
                 rightcount = rightcount - 5
                 print rightcount
                 
@@ -85,10 +85,10 @@ while True:
                 
     else:
         laseroff()
-        playsound("sudo aplay -q /opt/ninja/drivers/tripwire_driver/sounds/laser_aligned.wav");
+        playsound("sudo aplay -q /home/pi/laser/sounds/laser_aligned.wav");
         #time.sleep(1)## wait 1 second so sound can play
         
-        bashCommand = "sudo python /opt/ninja/drivers/tripwire_driver/python/StandbyMode.py" ## launch align helper
+        bashCommand = "sudo python /home/pi/laser/StandbyMode.py" ## launch align helper
         os.system(bashCommand) 
 
     
