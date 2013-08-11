@@ -13,21 +13,15 @@ import RPi.GPIO as GPIO, time, os
 GPIO.setmode(GPIO.BCM)
 
 
-# define function playing sound - file defined in call
-def laseron():
-    GPIO.setup(17, GPIO.OUT) ##Setup Laser
-    GPIO.output(17, True) ## Laser on
-   
-   
-   
-# call function
-
-laseron();
-
-
 DEBUG = 1
 GPIO.setmode(GPIO.BCM)
 
+def playsound( str ):
+    bashCommand = str
+    import subprocess
+    process = subprocess.Popen(bashCommand.split(), stdout=subprocess.PIPE)
+    output = process.communicate()[0]
+    
 def RCtime (RCpin):
         reading = 0
         GPIO.setup(RCpin, GPIO.OUT)
@@ -39,6 +33,9 @@ def RCtime (RCpin):
         while (GPIO.input(RCpin) == GPIO.LOW):
                 reading += 1
         return reading
+        
+playsound("sudo aplay -q /opt/ninja/drivers/tripwire_driver/sounds/warmup.wav");      
+
 
 while True:                                     
         print RCtime(18)     # Read RC timing using pin #18
