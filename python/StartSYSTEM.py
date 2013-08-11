@@ -119,7 +119,7 @@ while True: ## this quickly pulses the laser and checks if a signal is recieved 
 
         
         while True:
-        standbymode()
+        	standbymode()
                     
                 
     elif (RCtime(18) >1000):## no signal ALIGN LASER
