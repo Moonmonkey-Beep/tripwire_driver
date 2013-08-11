@@ -5,8 +5,7 @@ import RPi.GPIO as GPIO, time, os
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(23, GPIO.IN)
 
-import pickle
-
+import cPickle as pickle
 
 
 
