@@ -48,13 +48,61 @@ def standbymode():
 	if ( GPIO.input(23) == False ):
 	    #print "button pressed"
 	    playsound("sudo aplay -q /opt/ninja/drivers/tripwire_driver/sounds/button.wav");
-	    #time.sleep(1)## wait 1 second so sound can play
-	    #GPIO.output(22, False) # Turn LED off
-	    #exit(0) # quit app - can't use as later commands are not passed
+
 	        
-	    bashCommand = "sudo python /opt/ninja/drivers/tripwire_driver/python/ArmTRIPWIRE.py" ## launch align helper
-	    os.system(bashCommand) 
+	    armtripwire()
+	    
+	    
+def armtripwire():
+	playchirps = 1
+	playsound("sudo aplay -q /opt/ninja/drivers/tripwire_driver/sounds/warmup.wav");
+	laseron(); # turn laser on pin #17
+	Alertlevel = 10000 ## set the base level very high for the first run to prevent false alarms
+	Alarmcount = 0 ## how many times to play the alarm when triggered (makes sure Ninja Cloud detects it)
 	
+	while True:
+	
+	
+	    Lightlevel = RCtime(18)
+	
+	
+	    if (Alarmcount > 0):
+	    	print Alarmcount
+	    	Alarmcount = Alarmcount - 1
+	    else:
+	    	print "0"
+	    
+	    	
+	       
+	    Alertlevel = 2000 ## this is the ammount of darkness which triggers the alarm
+	
+	
+	    if (playchirps > 0): ## makes sure sound is only played once
+	        playsound("sudo aplay -q /opt/ninja/drivers/tripwire_driver/sounds/chirps.wav");
+	        playchirps = playchirps - 1
+	        
+	        
+	 
+	    if (Lightlevel > Alertlevel):
+	        
+	        # this is when intruder is detected
+	        #flashled(.1);  
+	        Alarmcount = 10 ## how many times to play the alarm when triggered (makes sure Ninja Cloud detects it)
+	        if (Alarmcount > 0):
+	        	print Alarmcount
+	        	Alarmcount = Alarmcount - 1
+	  
+	        
+	        #playsound("sudo aplay -q /opt/ninja/drivers/tripwire_driver/sounds/detected.wav");
+	        #laseroff()
+	
+	    else:
+	       if ( GPIO.input(23) == False ):
+	            #print "button pressed"
+	            playsound("sudo aplay -q /opt/ninja/drivers/tripwire_driver/sounds/button.wav");
+	            laseroff()
+	            playsound("sudo aplay -q /opt/ninja/drivers/tripwire_driver/sounds/deactivated.wav");
+	            standbymode():
     
 # define function  
 def AlignLaser(): # align laser
