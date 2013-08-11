@@ -44,6 +44,7 @@ def laseroff():
     GPIO.output(17, False) ## Laser on
     
 def standbymode():
+	print "def standbymode"
 	#flashled(1.5); ## This is when waiting button press to arm system
 	if ( GPIO.input(23) == False ):
 	    #print "button pressed"
@@ -54,6 +55,8 @@ def standbymode():
 	    
 	    
 def armtripwire():
+	print "def armtripwire"
+
 	playchirps = 1
 	playsound("sudo aplay -q /opt/ninja/drivers/tripwire_driver/sounds/warmup.wav");
 	laseron(); # turn laser on pin #17
@@ -106,6 +109,7 @@ def armtripwire():
     
 # define function  
 def AlignLaser(): # align laser
+	print "def AlignLaser"
 	
 	laseroff()
 	playchirps = 1
@@ -167,12 +171,7 @@ while True: ## this quickly pulses the laser and checks if a signal is recieved 
 
         
         while True:
-        	if ( GPIO.input(23) == False ):
-        		    #print "button pressed"
-        		    playsound("sudo aplay -q /opt/ninja/drivers/tripwire_driver/sounds/button.wav");
-        	
-        		        
-        		    armtripwire()
+        	standbymode()
                     
                 
     elif (RCtime(18) >1000):## no signal ALIGN LASER
