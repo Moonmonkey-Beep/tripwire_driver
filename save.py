@@ -12,6 +12,8 @@ import base64
 from pickle import dumps, loads
 import unittest
 import tempfile
+
+f = 100
  
 def s_dump(iterable_to_pickle, file_obj):
     """dump contents of an iterable iterable_to_pickle to file_obj, a file
@@ -71,7 +73,5 @@ class TestStreamingPickle(unittest.TestCase):
 if __name__ == "__main__":
     unittest.main()
 
-number = 100
 
 
-sPickle.s_dump(number, open('lst.spkl', 'wb'))
