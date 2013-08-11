@@ -45,16 +45,13 @@ def laseroff():
     
 def standbymode():
 	while True:
-		#print "def standbymode"
+		print "def standbymode"
 	#flashled(1.5); ## This is when waiting button press to arm system
 		if ( GPIO.input(23) == False ):
 			playsound("sudo aplay -q /opt/ninja/drivers/tripwire_driver/sounds/button.wav");       
-			armtripwire()
-		else:
-			#print "waiting"    
+			armtripwire()    
 	    
 def armtripwire():
-	#print "def armtripwire"
 
 	playchirps = 1
 	playsound("sudo aplay -q /opt/ninja/drivers/tripwire_driver/sounds/warmup.wav");
@@ -107,9 +104,7 @@ def armtripwire():
 	            standbymode()
     
 # define function  
-def AlignLaser(): # align laser
-	#print "def AlignLaser"
-	
+def AlignLaser(): # align lasers
 	laseroff()
 	playchirps = 1
 	playsound("sudo aplay -q /opt/ninja/drivers/tripwire_driver/sounds/setup.wav");
@@ -129,19 +124,19 @@ def AlignLaser(): # align laser
 	                playsound("sudo aplay -q /opt/ninja/drivers/tripwire_driver/sounds/beephigh.wav");
 	                #flashled(.15);
 	                rightcount = rightcount - 30 ## this number denotes a strong signal
-	                #print rightcount
+	                print rightcount
 	       
 	            elif (RCtime(18) < 300):## a medium signal
 	                playsound("sudo aplay -q /opt/ninja/drivers/tripwire_driver/sounds/beepmed.wav");
 	                #flashled(.20);
 	                rightcount = rightcount - 20
-	                #print rightcount
+	                print rightcount
 	                
 	   
 	            elif (RCtime(18) < 500):## a poor signal
 	                playsound("sudo aplay -q /opt/ninja/drivers/tripwire_driver/sounds/beeplow.wav");
 	                rightcount = rightcount - 5
-	                #print rightcount
+	                print rightcount
 	                
 	            #elif (RCtime(18) > 1000):## no signal
 	                #flashled(.25);               
