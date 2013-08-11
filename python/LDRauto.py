@@ -1,50 +1,25 @@
-#####################################SETUP####################################### 
+  #!/usr/bin/env python
 
-# Standard setup starts
-import RPi.GPIO as GPIO, time, os
-from time import sleep
-from sys import exit
+# Example for RC timing reading for Raspberry Pi
+# Must be used with GPIO 0.3.1a or later - earlier verions
+# are not fast enough!
+
+import RPi.GPIO as GPIO, time, os      
+
+DEBUG = 1
 GPIO.setmode(GPIO.BCM)
-GPIO.setup(23, GPIO.IN) # this turns the button to input on 23
 
-# Standard setup ends
-
-def RCtime (RCpin): ## Setup LDR detection
+def RCtime (RCpin):
         reading = 0
         GPIO.setup(RCpin, GPIO.OUT)
         GPIO.output(RCpin, GPIO.LOW)
-        time.sleep(0.05)
- 
+        time.sleep(0.1)
+
         GPIO.setup(RCpin, GPIO.IN)
         # This takes about 1 millisecond per loop cycle
         while (GPIO.input(RCpin) == GPIO.LOW):
                 reading += 1
         return reading
-        
-# define function flashing LED - flash rate defined in the call
-def flashled( str ):
-    GPIO.setup(22, GPIO.OUT) ##Setup LED
-    GPIO.output(22, True)
-    time.sleep(str)
-    GPIO.output(22, False)
-    time.sleep(str)
-    
-    # define function playing sound - file defined in call
-def playsound( str ):
-    bashCommand = str
-    import subprocess
-    process = subprocess.Popen(bashCommand.split(), stdout=subprocess.PIPE)
-    output = process.communicate()[0]
-   
-# define function
-def laseron():
-    GPIO.setup(17, GPIO.OUT) ##Setup Laser
-    GPIO.output(17, True) ## Laser on
-   
-   # define function
-def laseroff():
-    GPIO.setup(17, GPIO.OUT) ##Setup Laser
-    GPIO.output(17, False) ## Laser on
 
 ##################################ACTIVE#####################################
 
