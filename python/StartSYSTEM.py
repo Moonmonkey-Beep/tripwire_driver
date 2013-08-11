@@ -43,7 +43,7 @@ def laseroff():
     GPIO.setup(17, GPIO.OUT) ##Setup Laser
     GPIO.output(17, False) ## Laser on
     
-def AlignLaser() # align laser
+def AlignLaser(): # align laser
 	
 	laseroff()
 	playchirps = 1
