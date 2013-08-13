@@ -1,0 +1,33 @@
+
+
+
+**************HARDWARE SHOPPING LIST**************
+
+• Raspberry Pi (I used a model B as the ethernet port is useful for setup)
+• SD card with palladium installed
+• Wifi dongle (The one that ships with the Ninja Blocks works, or skip if you want a wired device)
+• Adafruit Pi Cobbler Kit http://learn.adafruit.com/adafruit-pi-cobbler-kit
+• Half-size breadboard http://www.adafruit.com/products/64
+• Photo cell (CdS photoresistor)
+• 5 W laser + mount
+• Fibre optic Light Transporter http://www.jaycar.com.au/productView.asp?ID=HP1193
+• A button
+• A mini amp with speaker (or just plug headphones in)
+• Some wire or connectors
+• Some type of case
+• A mirror
+
+
+**************BUILD HARDWARE**************
+
+Attach Pi Cobbler to Pi
+http://learn.adafruit.com
+
+Set up LDR to breadboard
+http://learn.adafruit.com/basic-resistor-sensor-reading-on-raspberry-pi/basic-photocell-reading
+
+Set up button to breadboard
+http://learn.adafruit.com/basic-resistor-sensor-reading-on-raspberry-pi/basic-photocell-reading
+
+Connect laser to breadboard
+http://learn.adafruit.com/basic-resistor-sensor-reading-on-raspberry-pi/basic-photocell-reading

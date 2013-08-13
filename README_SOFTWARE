@@ -1,0 +1,89 @@
+Sentences starting with $ indicate commands to be entered into the shell
+
+
+
+
+**************SET UP SOFTWARE **************
+
+Boot Raspberry Pi when connected to your router via ethernet cable
+Connect via ethernet if WiFi is not working by typing the ssh command into the shell on your Mac or PC
+The IP address for my RaspberryPi is 1.1.1.12, you need to check what yours is and replace it in the following code
+
+$ssh pi@10.1.1.12
+
+The password is:raspberry
+
+The ninja pi should log in.
+
+***Install dependencies***
+
+$sudo apt-get install python-dev
+INSTALLS PYTHON
+
+$sudo apt-get install python-rpi.gpio
+INSTALLS PYTHON GPIO CONTROLLER
+
+$sudo apt-get install python-pip
+INSTALLS PIP (HELPS INSTALL OTHER SOFTWARE)
+
+$sudo apt-get install netatalk
+MAKES THE TRIPWIRE APPEAR IN THE SIDEBAR OF LOCAL MACS
+
+$sudo apt-get update
+UPDATES EVERYTHING
+
+
+
+***install Ninja Software***
+$cd /opt/ninja/drivers/
+CHANGE TO THE DRIVERS DIRECTORY
+
+$sudo npm install -g ninja-toolbelt 
+INSTALL NINJA TOOLBELT
+
+$git clone git://github.com/moonmonkey/tripwire_driver.git
+INSTALLS TRIPWIRE DRIVER
+
+$cd /opt/ninja/drivers/tripwire_driver
+CHANGES INTO THE DRIVERS DIRECTORY
+
+$npm install
+ACTIVATES THE DRIVER
+
+
+
+***if you want to the device to be wireless***
+Make sure your wifi Dongle is plugged into the Raspberry Pi
+
+
+$sudo rm /etc/udev/rules.d/70-persistent-net.rules
+THIS DELETES ANY OLD RULES PRESENT ONT THE DISTRIBUTION, THIS HELPS WIFI BE CONNECTED TO THE CORRECT NETWORK INTERFACE (ETHERNET WILL STILL WORK)
+
+$sudo nano /etc/network/interfaces
+OPENS NETWORK INTERFACES SO YOU CAN ENTER YOUR WIFI NETWORK (SSID) AND PASSWORD
+
+I suggest using this this code:
+###############################
+auto lo
+
+iface lo inet loopback
+iface eth0 inet dhcp
+
+auto wlan0
+allow-hotplug wlan0
+iface wlan0 inet dhcp
+   wpa-scan-ssid 1
+   wpa-ap-scan 1
+   wpa-key-mgmt WPA-PSK
+   wpa-proto RSN WPA
+   wpa-pairwise CCMP TKIP
+   wpa-group CCMP TKIP
+   wpa-ssid “your network”
+   wpa-psk “your password”
+
+iface default inet dhcp
+###############################
+
+Then restart the machine
+
+$sudo reboot
