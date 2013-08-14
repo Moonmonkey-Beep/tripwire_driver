@@ -1,6 +1,7 @@
 This is the README for the Tripwire_driver
 
 This is a cloud connected device which when activate fires a laser beam across and and detects when the beam is broken. It connects to the ninja cloud so is easily integrated with your other home security and automation devices.
+Currently it is semi functional (must be manually armed via the terminal) full cloud integration remains to be added.
 
 Features:
 
@@ -15,6 +16,11 @@ Features:
 
 Coming Soon:
 
-• Programable button, to activate just then laser or the entire alarm system
+• Arming, Disarming and Alarming through Ninja Cloud
+
+• Programable button, choose to activate just the laser or the entire alarm system
 
 • Pulse coding to catch people using another laser to foil the system
+
+• Adaptive sensing to deal with changing light conditions
+
