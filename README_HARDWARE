@@ -1,22 +1,24 @@
 
 
 
-**************HARDWARE SHOPPING LIST**************
+**************HARDWARE SHOPPING LIST ESSENTIALS**************
 
 • Raspberry Pi (I used a model B as the ethernet port is useful for setup)
 • SD card with palladium installed
-• Wifi dongle (The one that ships with the Ninja Blocks works, or skip if you want a wired device)
-• Adafruit Pi Cobbler Kit http://learn.adafruit.com/adafruit-pi-cobbler-kit
-• Half-size breadboard http://www.adafruit.com/products/64
 • Photo cell (CdS photoresistor)
-• 5 W laser + mount
-• Fibre optic Light Transporter http://www.jaycar.com.au/productView.asp?ID=HP1193
+• 5 W laser 
 • A button
-• A mini amp with speaker (or just plug headphones in)
 • Some wire or connectors
 • Some type of case
 • A mirror
 
+**************HARDWARE SHOPPING LIST OPTIONAL**************
+• Wifi dongle (The one that ships with the Ninja Blocks works, or skip if you want a wired device)
+• Laser mount
+• A mini amp with speaker (or just plug headphones in)
+• Fibre optic Light Transporter http://www.jaycar.com.au/productView.asp?ID=HP1193
+• Adafruit Pi Cobbler Kit http://learn.adafruit.com/adafruit-pi-cobbler-kit
+• Half-size breadboard http://www.adafruit.com/products/64
 
 **************BUILD HARDWARE**************
 
