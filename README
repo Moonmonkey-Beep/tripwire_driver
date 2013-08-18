@@ -1,7 +1,7 @@
 This is the README for the Tripwire_driver
 
-This is a cloud connected device which when activate fires a laser beam across and and detects when the beam is broken. It connects to the ninja cloud so is easily integrated with your other home security and automation devices.
-Currently it is semi functional (must be manually armed via the terminal) the laser reports intruders via a sparkline in the Ninja Cloud. full cloud integration remains to be added.
+This is a cloud connected device which when activated fires a laser beam across and and detects when the beam is broken. It connects to the ninja cloud so is easily integrated with your other home security and automation devices.
+Currently it is semi functional (must be manually armed via the terminal) the laser reports intruders via a sparkline graph in the Ninja Cloud. full cloud integration remains to be added.
 
 Features:
 

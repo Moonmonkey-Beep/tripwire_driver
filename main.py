@@ -48,6 +48,8 @@ def laseroff():
     GPIO.output(17, False) ## Laser on
     
 def standbymode():
+	pickle.dump( "Disarmed", open( "/opt/ninja/drivers/save.p", "wb" ) )## create a file with zero in it
+
 	while True:
 
 	#flashled(1.5); ## This is when waiting button press to arm system
@@ -63,14 +65,14 @@ def armtripwire():
 	Alertlevel = 10000 ## set the base level very high for the first run to prevent false alarms
 	Alarmcount = 0 ## how many times to play the alarm when triggered (makes sure Ninja Cloud detects it)
 	import cPickle as pickle
-	pickle.dump( "0", open( "/opt/ninja/drivers/save.p", "wb" ) )## create a file with zero in it
+	pickle.dump( "Armed", open( "/opt/ninja/drivers/save.p", "wb" ) )## create a file with zero in it
 	while True:
 	
 	
 	    Lightlevel = RCtime(18)
 	
 	    if (Alarmcount > 0):
-	    	pickle.dump( Alarmcount, open( "/opt/ninja/drivers/save.p", "wb" ) )
+	    	pickle.dump( "Alarm", open( "/opt/ninja/drivers/save.p", "wb" ) )
 	    	print Alarmcount
 	    	Alarmcount = Alarmcount - 1
 	    #else:
@@ -117,6 +119,8 @@ def AlignLaser(): # align lasers
 	playsound("sudo aplay -q /opt/ninja/drivers/tripwire_driver/sounds/warmup.wav");
 	
 	rightcount = 150 # this is how long it takes laser to align
+	pickle.dump( "Align", open( "/opt/ninja/drivers/save.p", "wb" ) )## create a file with zero in it
+
 	while True:
 	    laseron(); # turn laser on pin #17
 	    if (playchirps > 0): ## makes sure sound is only played once
