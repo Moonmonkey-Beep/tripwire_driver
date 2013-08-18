@@ -5,7 +5,7 @@ import RPi.GPIO as GPIO, time, os
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(23, GPIO.IN)
 
-import pickle
+import cPickle as pickle
 
 
 # Standard setup ends
@@ -62,7 +62,7 @@ def armtripwire():
 	laseron(); # turn laser on pin #17
 	Alertlevel = 10000 ## set the base level very high for the first run to prevent false alarms
 	Alarmcount = 0 ## how many times to play the alarm when triggered (makes sure Ninja Cloud detects it)
-	import pickle
+	import cPickle as pickle
 	pickle.dump( "0", open( "save.p", "wb" ) )## create a file with zero in it
 	while True:
 	
