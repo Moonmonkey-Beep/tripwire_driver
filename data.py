@@ -1,9 +1,6 @@
 import pickle
 
-number = 3
-try:
-  number = pickle.load( open( "save.p", "rb" ) )
 
-except EOFError:
-  raise StopIteration
+
+number = pickle.load( open( "save.p", "rb" ) )
 print number
