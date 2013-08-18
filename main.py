@@ -48,6 +48,7 @@ def laseroff():
     GPIO.output(17, False) ## Laser on
     
 def standbymode():
+    pickle.dump( "Disarmed", open( "/opt/ninja/drivers/save.p", "wb" ) )
 
 
 	while True:
@@ -118,7 +119,7 @@ def AlignLaser(): # align lasers
 	rightcount = 150 # this is how long it takes laser to align
 	
 	while True:
-	    laseron(); # turn laser on pin #17
+	    laseron() # turn laser on pin #17
 	    if (playchirps > 0): ## makes sure sound is only played once
 	        playsound("sudo aplay -q /opt/ninja/drivers/tripwire_driver/sounds/align_instruction.wav");
 	        playchirps = playchirps - 1
@@ -150,7 +151,6 @@ def AlignLaser(): # align lasers
 	        laseroff()
 	        playsound("sudo aplay -q /opt/ninja/drivers/tripwire_driver/sounds/laser_aligned.wav");
 	        playsound("sudo aplay -q /opt/ninja/drivers/tripwire_driver/sounds/ready.wav");
-			pickle.dump( "Disarmed", open( "/opt/ninja/drivers/save.p", "wb" ) )
 	        standbymode()
 	        #time.sleep(1)## wait 1 second so sound can play
 	        
@@ -168,8 +168,7 @@ while True: ## this quickly pulses the laser and checks if a signal is recieved 
     # delare variable
  
     if (RCtime(18) < 1001): ## signal detected STANDBY MODE
-        laseroff(); # turn laser off 
-		pickle.dump( "Disarmed", open( "/opt/ninja/drivers/save.p", "wb" ) )
+        laseroff() # turn laser off
         standbymode()
                     
                 
