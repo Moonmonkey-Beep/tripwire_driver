@@ -1,6 +1,6 @@
 # Save a dictionary into a pickle file.
 import pickle
 
-favorite_color = { "lion": "yellow", "kitty": "red" }
+number = { 99 }
 
-pickle.dump( favorite_color, open( "save.p", "wb" ) )
+pickle.dump( number, open( "save.p", "wb" ) )
