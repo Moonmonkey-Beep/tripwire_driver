@@ -51,7 +51,7 @@ def standbymode():
     pickle.dump( "Disarmed", open( "/opt/ninja/drivers/save.p", "wb" ) )
 
 
-	while True:
+    while True:
 
 	#flashled(1.5); ## This is when waiting button press to arm system
 		if ( GPIO.input(23) == False ):
@@ -149,9 +149,9 @@ def AlignLaser(): # align lasers
 	                #flashled(.25);               
 	    else:
 	        laseroff()
-	        playsound("sudo aplay -q /opt/ninja/drivers/tripwire_driver/sounds/laser_aligned.wav");
-	        playsound("sudo aplay -q /opt/ninja/drivers/tripwire_driver/sounds/ready.wav");
-	        standbymode()
+            playsound("sudo aplay -q /opt/ninja/drivers/tripwire_driver/sounds/laser_aligned.wav");
+            playsound("sudo aplay -q /opt/ninja/drivers/tripwire_driver/sounds/ready.wav");
+            standbymode()
 	        #time.sleep(1)## wait 1 second so sound can play
 	        
 	        	
