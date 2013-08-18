@@ -48,7 +48,7 @@ def laseroff():
     GPIO.output(17, False) ## Laser on
     
 def standbymode():
-	pickle.dump( "Disarmed", open( "/opt/ninja/drivers/save.p", "wb" ) )## create a file with zero in it
+
 
 	while True:
 
@@ -58,14 +58,12 @@ def standbymode():
 			armtripwire()    
 	    
 def armtripwire():
-
+	pickle.dump( "Armed", open( "/opt/ninja/drivers/save.p", "wb" ) )
 	playchirps = 1
 	playsound("sudo aplay -q /opt/ninja/drivers/tripwire_driver/sounds/warmup.wav");
 	laseron(); # turn laser on pin #17
 	Alertlevel = 10000 ## set the base level very high for the first run to prevent false alarms
 	Alarmcount = 0 ## how many times to play the alarm when triggered (makes sure Ninja Cloud detects it)
-	import cPickle as pickle
-	pickle.dump( "Armed", open( "/opt/ninja/drivers/save.p", "wb" ) )## create a file with zero in it
 	while True:
 	
 	
@@ -75,10 +73,8 @@ def armtripwire():
 	    	pickle.dump( "Alarm", open( "/opt/ninja/drivers/save.p", "wb" ) )
 	    	print Alarmcount
 	    	Alarmcount = Alarmcount - 1
-	    #else:
-	    	#pickle.dump( "0", open( "save.p", "wb" ) )
-	    	#print "0"
-	    
+	    else:
+	    	pickle.dump( "Armed", open( "/opt/ninja/drivers/save.p", "wb" ) )	    
 	    	
 	       
 	    Alertlevel = 2000 ## this is the ammount of darkness which triggers the alarm
@@ -114,13 +110,13 @@ def armtripwire():
 # define function  
 def AlignLaser(): # align lasers
 	laseroff()
+	pickle.dump( "Align", open( "/opt/ninja/drivers/save.p", "wb" ) )## create a file with zero in it
 	playchirps = 1
 	playsound("sudo aplay -q /opt/ninja/drivers/tripwire_driver/sounds/setup.wav");
 	playsound("sudo aplay -q /opt/ninja/drivers/tripwire_driver/sounds/warmup.wav");
 	
 	rightcount = 150 # this is how long it takes laser to align
-	pickle.dump( "Align", open( "/opt/ninja/drivers/save.p", "wb" ) )## create a file with zero in it
-
+	
 	while True:
 	    laseron(); # turn laser on pin #17
 	    if (playchirps > 0): ## makes sure sound is only played once
@@ -154,6 +150,7 @@ def AlignLaser(): # align lasers
 	        laseroff()
 	        playsound("sudo aplay -q /opt/ninja/drivers/tripwire_driver/sounds/laser_aligned.wav");
 	        playsound("sudo aplay -q /opt/ninja/drivers/tripwire_driver/sounds/ready.wav");
+		pickle.dump( "Disarmed", open( "/opt/ninja/drivers/save.p", "wb" ) )
 	        standbymode()
 	        #time.sleep(1)## wait 1 second so sound can play
 	        
@@ -172,7 +169,7 @@ while True: ## this quickly pulses the laser and checks if a signal is recieved 
  
     if (RCtime(18) < 1001): ## signal detected STANDBY MODE
         laseroff(); # turn laser off 
-
+	pickle.dump( "Disarmed", open( "/opt/ninja/drivers/save.p", "wb" ) )
         standbymode()
                     
                 
