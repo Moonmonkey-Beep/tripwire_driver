@@ -66,7 +66,7 @@ def armtripwire():
 	playsound("sudo aplay -q /opt/ninja/drivers/tripwire_driver/sounds/warmup.wav");
 	laseron(); # turn laser on pin #17
 	Alertlevel = 10000 ## set the base level very high for the first run to prevent false alarms
-	Alarmcount = 10 ## how many times to play the alarm when triggered (makes sure Ninja Cloud detects it)
+	Alarmcount = 0 ## how many times to play the alarm when triggered (makes sure Ninja Cloud detects it)
 	while True:
 	
 	
