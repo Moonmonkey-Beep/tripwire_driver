@@ -5,4 +5,5 @@ while True:
 		number = pickle.load( open( "save.p", "rb" ) )
 		print number
 	except EOFError:
+		print "error"
 		#raise StopIteration
