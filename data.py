@@ -1,9 +1,10 @@
 import pickle
-while True:   
 
-	try:
-		number = pickle.load( open( "save.p", "rb" ) )
+
+try:
+	number = pickle.load( open( "save.p", "rb" ) )
+	if (number > 0):
 		print number
-	except EOFError:
-		print "error"
-		#raise StopIteration
+except EOFError:
+	print ""
+	#raise StopIteration
