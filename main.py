@@ -150,7 +150,7 @@ def AlignLaser(): # align lasers
 	        laseroff()
 	        playsound("sudo aplay -q /opt/ninja/drivers/tripwire_driver/sounds/laser_aligned.wav");
 	        playsound("sudo aplay -q /opt/ninja/drivers/tripwire_driver/sounds/ready.wav");
-		pickle.dump( "Disarmed", open( "/opt/ninja/drivers/save.p", "wb" ) )
+			pickle.dump( "Disarmed", open( "/opt/ninja/drivers/save.p", "wb" ) )
 	        standbymode()
 	        #time.sleep(1)## wait 1 second so sound can play
 	        
@@ -169,7 +169,7 @@ while True: ## this quickly pulses the laser and checks if a signal is recieved 
  
     if (RCtime(18) < 1001): ## signal detected STANDBY MODE
         laseroff(); # turn laser off 
-	pickle.dump( "Disarmed", open( "/opt/ninja/drivers/save.p", "wb" ) )
+		pickle.dump( "Disarmed", open( "/opt/ninja/drivers/save.p", "wb" ) )
         standbymode()
                     
                 
