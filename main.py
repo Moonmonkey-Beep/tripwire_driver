@@ -69,7 +69,6 @@ def armtripwire():
 	
 	    Lightlevel = RCtime(18)
 	
-		import pickle
 	    if (Alarmcount > 0):
 	    	pickle.dump( Alarmcount, open( "save.p", "wb" ) )
 	    	print Alarmcount
