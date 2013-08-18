@@ -70,7 +70,7 @@ def armtripwire():
 	    Lightlevel = RCtime(18)
 	
 	
-	    if (Alarmcount > 0):
+	    if (Alarmcount >= 0):
 	    	pickle.dump( Alarmcount, open( "save.p", "wb" ) )
 	    	print Alarmcount
 	    	Alarmcount = Alarmcount - 1
@@ -94,7 +94,7 @@ def armtripwire():
 	        # this is when intruder is detected
 	        #flashled(.1);  
 	        Alarmcount = 10 ## how many times to play the alarm when triggered (makes sure Ninja Cloud detects it)
-	        if (Alarmcount > 0):
+	        if (Alarmcount >= 0):
 	        	print Alarmcount
 	        	Alarmcount = Alarmcount - 1
 	  
