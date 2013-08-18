@@ -93,7 +93,7 @@ def armtripwire():
 	        
 	        # this is when intruder is detected
 	        #flashled(.1);  
-	        Alarmcount = 10 ## how many times to play the alarm when triggered (makes sure Ninja Cloud detects it)
+	        Alarmcount = 20 ## how many times to play the alarm when triggered (makes sure Ninja Cloud detects it)
 	        if (Alarmcount >= 0):
 	        	print Alarmcount
 	        	Alarmcount = Alarmcount - 1
