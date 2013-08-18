@@ -63,14 +63,14 @@ def armtripwire():
 	Alertlevel = 10000 ## set the base level very high for the first run to prevent false alarms
 	Alarmcount = 0 ## how many times to play the alarm when triggered (makes sure Ninja Cloud detects it)
 	import cPickle as pickle
-	pickle.dump( "0", open( "save.p", "wb" ) )## create a file with zero in it
+	pickle.dump( "0", open( "/opt/ninja/drivers/save.p", "wb" ) )## create a file with zero in it
 	while True:
 	
 	
 	    Lightlevel = RCtime(18)
 	
 	    if (Alarmcount > 0):
-	    	pickle.dump( Alarmcount, open( "save.p", "wb" ) )
+	    	pickle.dump( Alarmcount, open( "/opt/ninja/drivers/save.p", "wb" ) )
 	    	print Alarmcount
 	    	Alarmcount = Alarmcount - 1
 	    #else:
