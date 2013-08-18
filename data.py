@@ -6,5 +6,5 @@ try:
 	if (number > 0):
 		print number
 except EOFError:
-	print "error"
+	print "Armed"
 	#raise StopIteration

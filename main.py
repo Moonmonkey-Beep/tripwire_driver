@@ -49,6 +49,7 @@ def laseroff():
     
 def standbymode():
     pickle.dump( "Disarmed", open( "/opt/ninja/drivers/save.p", "wb" ) )
+    print "Standby Mode"
 
 
     while True:
@@ -59,6 +60,7 @@ def standbymode():
 			armtripwire()    
 	    
 def armtripwire():
+	print "Arming Tripwire"
 	pickle.dump( "Armed", open( "/opt/ninja/drivers/save.p", "wb" ) )
 	playchirps = 1
 	playsound("sudo aplay -q /opt/ninja/drivers/tripwire_driver/sounds/warmup.wav");
@@ -110,6 +112,7 @@ def armtripwire():
     
 # define function  
 def AlignLaser(): # align lasers
+	print "Aligning Tripwire"
 	laseroff()
 	pickle.dump( "Align", open( "/opt/ninja/drivers/save.p", "wb" ) )## create a file with zero in it
 	playchirps = 1
@@ -157,7 +160,7 @@ def AlignLaser(): # align lasers
 	        	
 
 #####################################MAIN####################################### 
-##print "running StartSYSTEM"
+
 laseroff()
 
 
