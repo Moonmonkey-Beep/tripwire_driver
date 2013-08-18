@@ -1,6 +1,6 @@
 
 
-if True:                                     
+while True:                                     
         # Load the dictionary back from the pickle file.
         import pickle
         
