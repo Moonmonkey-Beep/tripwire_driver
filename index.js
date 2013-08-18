@@ -9,8 +9,8 @@ util.inherits(myDriver,stream);
 // Our greeting to the user.
 var HELLO_WORLD_ANNOUNCEMENT = {
   "contents": [
-    { "type": "heading",      "text": "Hello World Driver Loaded" },
-    { "type": "paragraph",    "text": "The hello world driver has been loaded. You should not see this message again." }
+    { "type": "heading",      "text": "Laser Tripwire Driver Loaded" },
+    { "type": "paragraph",    "text": "The Laser Tripwire driver has been loaded. You should not see this message again." }
   ]
 };
 
