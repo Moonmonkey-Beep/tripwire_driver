@@ -201,12 +201,12 @@ while True: ## this quickly pulses the laser and checks if a signal is recieved 
  
     if (RCtime(18) < 1001): ## signal detected STANDBY MODE
         laseroff() # turn laser off
-		print "aligned"
+        print "aligned"
         standbymode()
                     
                 
     elif (RCtime(18) >1000):## no signal ALIGN LASER
-		print "not aligned"
+        print "not aligned"
     	AlignLaser() ## calls align laser function (at the top)
     
     
