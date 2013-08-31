@@ -99,7 +99,7 @@ def armtripwire():
 	        	Alarmcount = Alarmcount - 1
 	  
 	        
-	        #playsound("sudo aplay -q /opt/ninja/drivers/tripwire_driver/sounds/detected.wav");
+	        playsound("sudo aplay -q /opt/ninja/drivers/tripwire_driver/sounds/detected.wav");
 	        #laseroff()
 	
 	    else:
