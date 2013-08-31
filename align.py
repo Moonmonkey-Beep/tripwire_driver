@@ -66,5 +66,5 @@ def checker():
         	print "not aligned"
     		#AlignLaser() ## calls align laser function (at the top)
     		laseroff();
-  
+  		laseroff();
 checker()  
