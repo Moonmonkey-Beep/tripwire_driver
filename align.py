@@ -59,12 +59,12 @@ def checker():
         	laseroff() # turn laser off
         	print "aligned"
         	#standbymode()
-        	laseron();
+        	laseroff();
                     
                 
     	elif (RCtime(18) >1000):## no signal ALIGN LASER
         	print "not aligned"
     		#AlignLaser() ## calls align laser function (at the top)
-    		laseron();
+    		laseroff();
   
 checker()  
