@@ -203,7 +203,6 @@ while True: ## this quickly pulses the laser and checks if a signal is recieved 
     if (RCtime(18) < 1001): ## signal detected STANDBY MODE
         laseroff() # turn laser off
         print "aligned"
-        laseroff()
         standbymode()
                     
                 
