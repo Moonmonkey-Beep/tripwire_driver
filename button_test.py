@@ -23,16 +23,16 @@ def RCtime (RCpin): ## Setup LDR detection
         return reading
 Count = 0
 if ( GPIO.input(23) == False ):
-	Count = "null"
-	print Count
+	Count = 100 ## how many times to play the alarm when triggered (makes sure Ninja Cloud detects it)
 
+
+
+
+#flashled(1.5); ## This is when waiting button press to arm system
 
 while True:
 		
-	if (Count == "null"):
-		Count = 100   
-
-		
+	
 	if ( GPIO.input(23) == False ):
 
 	
