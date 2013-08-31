@@ -57,16 +57,16 @@ def standbymode():
     randnumber2 = randint(1,4) #Inclusive
 
     if (randnumber2 == 1):
-		playsound("sudo aplay -q /opt/ninja/drivers/tripwire_driver/sounds/standby1.wav");
+		playsound("sudo aplay /opt/ninja/drivers/tripwire_driver/sounds/standby1.wav");
 
     elif (randnumber2 == 2):
-		playsound("sudo aplay -q /opt/ninja/drivers/tripwire_driver/sounds/standby2.wav");
+		playsound("sudo aplay /opt/ninja/drivers/tripwire_driver/sounds/standby2.wav");
 
     elif (randnumber2 == 3):
-		playsound("sudo aplay -q /opt/ninja/drivers/tripwire_driver/sounds/standby3.wav");
+		playsound("sudo aplay /opt/ninja/drivers/tripwire_driver/sounds/standby3.wav");
 
     elif (randnumber2 == 4):
-		playsound("sudo aplay -q /opt/ninja/drivers/tripwire_driver/sounds/standby4.wav");
+		playsound("sudo aplay /opt/ninja/drivers/tripwire_driver/sounds/standby4.wav");
 
 
     while True:
@@ -107,16 +107,16 @@ def armtripwire():
 
 	 
 			if (randnumber == 1):
-				playsound("sudo aplay -q /opt/ninja/drivers/tripwire_driver/sounds/activated1.wav");
+				playsound("sudo aplay /opt/ninja/drivers/tripwire_driver/sounds/activated1.wav");
 				playchirps = playchirps - 1
 			elif (randnumber == 2):
-				playsound("sudo aplay -q /opt/ninja/drivers/tripwire_driver/sounds/activated2.wav");
+				playsound("sudo aplay /opt/ninja/drivers/tripwire_driver/sounds/activated2.wav");
 				playchirps = playchirps - 1
 			elif (randnumber == 3):
-				playsound("sudo aplay -q /opt/ninja/drivers/tripwire_driver/sounds/activated3.wav");
+				playsound("sudo aplay /opt/ninja/drivers/tripwire_driver/sounds/activated3.wav");
 				playchirps = playchirps - 1
 			elif (randnumber == 4):
-				playsound("sudo aplay -q /opt/ninja/drivers/tripwire_driver/sounds/activated4.wav");
+				playsound("sudo aplay /opt/ninja/drivers/tripwire_driver/sounds/activated4.wav");
 				playchirps = playchirps - 1
 	        
 	        
@@ -131,15 +131,18 @@ def armtripwire():
 	        	Alarmcount = Alarmcount - 1
 	  
 	        
-	        playsound("sudo aplay -q /opt/ninja/drivers/tripwire_driver/sounds/detected.wav");
+	        playsound("sudo aplay /opt/ninja/drivers/tripwire_driver/sounds/detected.wav");
+	        playsound("sudo aplay /opt/ninja/drivers/tripwire_driver/sounds/detected.wav");
+	        playsound("sudo aplay /opt/ninja/drivers/tripwire_driver/sounds/detected.wav");
+
 	        #laseroff()
 	
 	    else:
 	       if ( GPIO.input(23) == False ):
 	            print "button pressed"
-	            playsound("sudo aplay -q /opt/ninja/drivers/tripwire_driver/sounds/button.wav");
+	            playsound("sudo aplay /opt/ninja/drivers/tripwire_driver/sounds/button.wav");
 	            laseroff()
-	            playsound("sudo aplay -q /opt/ninja/drivers/tripwire_driver/sounds/deactivated.wav");
+	            playsound("sudo aplay /opt/ninja/drivers/tripwire_driver/sounds/deactivated.wav");
 	            standbymode()
     
 # define function  
@@ -148,8 +151,8 @@ def AlignLaser(): # align lasers
 	laseroff()
 	pickle.dump( "Align", open( "/opt/ninja/drivers/save.p", "wb" ) )## create a file with zero in it
 	playchirps = 1
-	playsound("sudo aplay -q /opt/ninja/drivers/tripwire_driver/sounds/setup.wav");
-	playsound("sudo aplay -q /opt/ninja/drivers/tripwire_driver/sounds/warmup.wav");
+	playsound("sudo aplay /opt/ninja/drivers/tripwire_driver/sounds/setup.wav");
+	playsound("sudo aplay /opt/ninja/drivers/tripwire_driver/sounds/warmup.wav");
 	
 	rightcount = 150 # this is how long it takes laser to align
 	
@@ -163,20 +166,20 @@ def AlignLaser(): # align lasers
 	    if (rightcount > 1):
 	            
 	            if (RCtime(18) < 200): ## a good signal
-	                playsound("sudo aplay -q /opt/ninja/drivers/tripwire_driver/sounds/beephigh.wav");
+	                playsound("sudo aplay /opt/ninja/drivers/tripwire_driver/sounds/beephigh.wav");
 	                #flashled(.15);
 	                rightcount = rightcount - 30 ## this number denotes a strong signal
 	                print rightcount
 	       
 	            elif (RCtime(18) < 300):## a medium signal
-	                playsound("sudo aplay -q /opt/ninja/drivers/tripwire_driver/sounds/beepmed.wav");
+	                playsound("sudo aplay /opt/ninja/drivers/tripwire_driver/sounds/beepmed.wav");
 	                #flashled(.20);
 	                rightcount = rightcount - 20
 	                print rightcount
 	                
 	   
 	            elif (RCtime(18) < 500):## a poor signal
-	                playsound("sudo aplay -q /opt/ninja/drivers/tripwire_driver/sounds/beeplow.wav");
+	                playsound("sudo aplay /opt/ninja/drivers/tripwire_driver/sounds/beeplow.wav");
 	                rightcount = rightcount - 5
 	                print rightcount
 	                
