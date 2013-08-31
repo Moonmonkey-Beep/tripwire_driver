@@ -1,16 +1,17 @@
-#!/usr/bin/env python2.7
+#####################################SETUP####################################### 
 
-from time import sleep
-import subprocess
-import RPi.GPIO as GPIO
+# Standard setup starts
+import RPi.GPIO as GPIO, time, os
+GPIO.setmode(GPIO.BCM)
+GPIO.setup(23, GPIO.IN)
+
+import cPickle as pickle
+from random import randint
+
 
 CHANNEL = 23 # GPIO channel 23 is on pin 16 of connector P1
 # it will work on any GPIO channel
 
-GPIO.setmode(GPIO.BCM)
-GPIO.setup(CHANNEL, GPIO.IN, pull_up_down=GPIO.PUD_UP)
-# setup the channel as input with a 50K Ohm pull up. A push button will ground the pin,
-# creating a falling edge.
 
 
 def system_action(CHANNEL):
@@ -31,7 +32,7 @@ def system_action(CHANNEL):
                 button_press_timer = 0
             sleep(1)
 
-GPIO.add_event_detect(CHANNEL, GPIO.FALLING, callback=system_action, bouncetime=200)
+#GPIO.add_event_detect(CHANNEL, GPIO.FALLING, callback=system_action, bouncetime=200)
 # setup the thread, detect a falling edge on channel 23 and debounce it with 200mSec
 
 # assume this is the main code...
