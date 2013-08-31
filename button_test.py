@@ -7,6 +7,7 @@ GPIO.setup(23, GPIO.IN)
 
 import cPickle as pickle
 from random import randint
+import time
 
 
 # Standard setup ends
