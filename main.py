@@ -82,6 +82,15 @@ def armtripwire():
 	playchirps = 1
 	playsound("sudo aplay -q /opt/ninja/drivers/tripwire_driver/sounds/warmup.wav");
 	laseron(); # turn laser on pin #17
+	
+	##new align code##########
+	
+	if (RCtime(18) >1000):## no signal ALIGN LASER
+	        print "Not Aligned"
+	    	AlignLaser() ## calls align laser function (at the top)
+	################
+	
+	
 	Alertlevel = 10000 ## set the base level very high for the first run to prevent false alarms
 	Alarmcount = 0 ## how many times to play the alarm when triggered (makes sure Ninja Cloud detects it)
 	while True:
@@ -187,7 +196,7 @@ def AlignLaser(): # align lasers
 	    else:
 	        	standbymode()
 
-def mirrorchecker():
+def mirrorcheckeroff():
 	laseroff()
 
 		 ## this quickly pulses the laser and checks if a signal is recieved if not recieved triggers setup.
@@ -198,13 +207,13 @@ def mirrorchecker():
 	 
 	if (RCtime(18) < 1001): ## signal detected STANDBY MODE
 	        laseroff() # turn laser off
-	        print "aligned"
+	        print "Aligned"
 	        standbymode()
 
 	                    
 	                
 	elif (RCtime(18) >1000):## no signal ALIGN LASER
-	        print "not aligned"
+	        print "Not Aligned"
 	    	AlignLaser() ## calls align laser function (at the top)
 
 
@@ -215,5 +224,5 @@ def mirrorchecker():
 
 print "running StartSYSTEM"
 
-mirrorchecker()
+mirrorcheckeroff()
    
