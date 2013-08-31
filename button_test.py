@@ -21,8 +21,9 @@ def RCtime (RCpin): ## Setup LDR detection
     while (GPIO.input(RCpin) == GPIO.LOW):
         reading += 1
         return reading
-
-Count = 100 ## how many times to play the alarm when triggered (makes sure Ninja Cloud detects it)
+Count = 0
+if ( GPIO.input(23) == False ):
+	Count = 100 ## how many times to play the alarm when triggered (makes sure Ninja Cloud detects it)
 
 
 
@@ -38,16 +39,21 @@ while True:
 			if (Count > 0):
 				print Count
 				Count = Count - 1   
-				time.sleep(.5)
+				time.sleep(.1)
 	 
- 	
+	if ( GPIO.input(23) == True ):
 
 
-if (Count > 50):
-	print "short"
-	print Count
+			if (Count > 0):
+				if (Count > 50):
+					print "short"
+					print Count
 
-else:
-	print "long"  
-	print Count
+				else:
+					print "long"  
+					print Count
+			
+
+
+
 
