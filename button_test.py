@@ -38,7 +38,7 @@ while True:
 			if (Count > 0):
 				print Count
 				Count = Count - 1   
-				sleep(.5)
+				time.sleep(.5)
 	 
  	
 
