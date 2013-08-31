@@ -1,9 +1,9 @@
 #####################################SETUP####################################### 
 
 # Standard setup starts
-#import RPi.GPIO as GPIO, time, os
-#GPIO.setmode(GPIO.BCM)
-#GPIO.setup(23, GPIO.IN)
+import RPi.GPIO as GPIO, time, os
+GPIO.setmode(GPIO.BCM)
+GPIO.setup(23, GPIO.IN)
 
 import cPickle as pickle
 from random import randint
