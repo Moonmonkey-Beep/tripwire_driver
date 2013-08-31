@@ -88,20 +88,22 @@ def armtripwire():
 	
 	    if (playchirps > 0): ## makes sure sound is only played once
 	       
-			from random import randint
-			randnumber = randint(1,4) #Inclusive
+			playsound("sudo aplay -q /opt/ninja/drivers/tripwire_driver/sounds/activated1.wav");
+			playchirps = playchirps - 1
+			#randnumber = randint(1,4) #Inclusive
 	 
-			if (randnumber == 1):
-				playsound("sudo aplay -q /opt/ninja/drivers/tripwire_driver/sounds/activated1.wav");
-				playchirps = playchirps - 1
-			elif (randnumber == 2):
-				playsound("sudo aplay -q /opt/ninja/drivers/tripwire_driver/sounds/activated2.wav");
-				playchirps = playchirps - 1
-			elif (randnumber == 3):
-				playsound("sudo aplay -q /opt/ninja/drivers/tripwire_driver/sounds/activated3.wav");				playchirps = playchirps - 1
-			elif (randnumber == 4):
-				playsound("sudo aplay -q /opt/ninja/drivers/tripwire_driver/sounds/activated4.wav");
-				playchirps = playchirps - 1
+			#if (randnumber == 1):
+				#playsound("sudo aplay -q /opt/ninja/drivers/tripwire_driver/sounds/activated1.wav");
+				#playchirps = playchirps - 1
+			#elif (randnumber == 2):
+				#playsound("sudo aplay -q /opt/ninja/drivers/tripwire_driver/sounds/activated2.wav");
+				#playchirps = playchirps - 1
+			#elif (randnumber == 3):
+				#playsound("sudo aplay -q /opt/ninja/drivers/tripwire_driver/sounds/activated3.wav");
+				#playchirps = playchirps - 1
+			#elif (randnumber == 4):
+				#playsound("sudo aplay -q /opt/ninja/drivers/tripwire_driver/sounds/activated4.wav");
+				#playchirps = playchirps - 1
 	        
 	        
 	 
