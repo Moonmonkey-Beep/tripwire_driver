@@ -49,22 +49,24 @@ def laseroff():
 def checker():
 
 
-	#while True: ## this quickly pulses the laser and checks if a signal is recieved if not recieved triggers setup.
+	 ## this quickly pulses the laser and checks if a signal is recieved if not recieved triggers setup.
 
-		laseron(); # turn laser on pin #17
+	laseron(); # turn laser on pin #17
     
     # delare variable
  
-    	if (RCtime(18) < 1001): ## signal detected STANDBY MODE
+	if (RCtime(18) < 1001): ## signal detected STANDBY MODE
         	laseroff() # turn laser off
         	print "aligned"
         	#standbymode()
         	laseroff();
                     
                 
-    	elif (RCtime(18) >1000):## no signal ALIGN LASER
+	elif (RCtime(18) >1000):## no signal ALIGN LASER
         	print "not aligned"
     		#AlignLaser() ## calls align laser function (at the top)
     		laseroff();
   		laseroff();
-checker()  
+
+while True:
+	checker()  
