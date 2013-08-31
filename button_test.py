@@ -32,7 +32,10 @@ if ( GPIO.input(23) == False ):
 
 while True:
 		
-	print Count
+	if (Count == 0):
+		Count = 100   
+
+		
 	if ( GPIO.input(23) == False ):
 
 	
