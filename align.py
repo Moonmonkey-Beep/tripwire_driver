@@ -49,7 +49,7 @@ def laseroff():
 def checker():
 
 
-	while True: ## this quickly pulses the laser and checks if a signal is recieved if not recieved triggers setup.
+	#while True: ## this quickly pulses the laser and checks if a signal is recieved if not recieved triggers setup.
 
 		laseron(); # turn laser on pin #17
     
