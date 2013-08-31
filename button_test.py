@@ -1,47 +1,50 @@
 #####################################SETUP####################################### 
 
 # Standard setup starts
-import RPi.GPIO as GPIO, time, os
-GPIO.setmode(GPIO.BCM)
-GPIO.setup(23, GPIO.IN)
+#import RPi.GPIO as GPIO, time, os
+#GPIO.setmode(GPIO.BCM)
+#GPIO.setup(23, GPIO.IN)
 
 import cPickle as pickle
 from random import randint
 
 
-CHANNEL = 23 # GPIO channel 23 is on pin 16 of connector P1
-# it will work on any GPIO channel
+# Standard setup ends
+
+def RCtime (RCpin): ## Setup LDR detection
+    reading = 0
+    GPIO.setup(RCpin, GPIO.OUT)
+    GPIO.output(RCpin, GPIO.LOW)
+    time.sleep(0.05)     # adjust speed of reading
+    GPIO.setup(RCpin, GPIO.IN)
+    while (GPIO.input(RCpin) == GPIO.LOW):
+        reading += 1
+        return reading
+
+Count = 100 ## how many times to play the alarm when triggered (makes sure Ninja Cloud detects it)
 
 
 
-def system_action(CHANNEL):
-    print('Button press = negative edge detected on channel %s'%CHANNEL)
-    button_press_timer = 0
-    while True:
-            if (GPIO.input(CHANNEL) == False) : # while button is still pressed down
-                button_press_timer += 1 # keep counting until button is released
-            else: # button is released, figure out for how long
-                if (button_press_timer > 7) : # pressed for > 7 seconds
-                    print "long press > 7 : ", button_press_timer
-                    # do what you need to do before halting
-                    subprocess.call(['shutdown -h now "System halted by GPIO action" &'], shell=True)
-                elif (button_press_timer > 2) : # press for > 2 < 7 seconds
-                    print "short press > 2 < 7 : ", button_press_timer
-                    # do what you need to do before a reboot
-                    subprocess.call(['sudo reboot &'], shell=True)
-                button_press_timer = 0
-            sleep(1)
 
-#GPIO.add_event_detect(CHANNEL, GPIO.FALLING, callback=system_action, bouncetime=200)
-# setup the thread, detect a falling edge on channel 23 and debounce it with 200mSec
+#flashled(1.5); ## This is when waiting button press to arm system
+if ( GPIO.input(23) == False ):
+		playsound("sudo aplay -q /opt/ninja/drivers/tripwire_driver/sounds/button.wav");       
+		armtripwire()    
+		
+		while True:
 
-# assume this is the main code...
-try:
-    while True:
-        # do whatever
-        # while "waiting" for falling edge on port 23
-        sleep (2)
 
-except KeyboardInterrupt:
-    GPIO.cleanup()       # clean up GPIO on CTRL+C exit
-GPIO.cleanup()           # clean up GPIO on normal exit
+	
+			if (Count > 0):
+				print Count
+				Count = Count - 1   
+	 
+ 	
+
+
+if (Count > 50):
+	print "short"
+
+else:
+	print "long"  
+
