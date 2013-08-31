@@ -50,12 +50,25 @@ def laseroff():
 
 
 def standbymode():
-
+    laseroff()
     pickle.dump( "Disarmed", open( "/opt/ninja/drivers/save.p", "wb" ) )
     print "Standby Mode"
+    randnumber2 = randint(1,4) #Inclusive
 
+if (randnumber2 == 1):
+	playsound("sudo aplay -q /opt/ninja/drivers/tripwire_driver/sounds/standby1.wav");
+	standbymode()
+elif (randnumber2 == 2):
+	playsound("sudo aplay -q /opt/ninja/drivers/tripwire_driver/sounds/standby2.wav");
+	standbymode()
+elif (randnumber2 == 3):
+	playsound("sudo aplay -q /opt/ninja/drivers/tripwire_driver/sounds/standby3.wav");
+	standbymode()	
+elif (randnumber2 == 4):
+	playsound("sudo aplay -q /opt/ninja/drivers/tripwire_driver/sounds/standby4.wav");
+	standbymode()
 
-    while True:
+	while True:
 
 		#flashled(1.5); ## This is when waiting button press to arm system
 			if ( GPIO.input(23) == False ):
@@ -169,23 +182,10 @@ def AlignLaser(): # align lasers
 	            #elif (RCtime(18) > 1000):## no signal
 	                #flashled(.25);               
 	    else:
-	        	laseroff()
-  
-	        	randnumber2 = randint(1,4) #Inclusive
+	        	standbymode()
 
- 
-	        	if (randnumber2 == 1):
-					playsound("sudo aplay -q /opt/ninja/drivers/tripwire_driver/sounds/standby1.wav");
-					standbymode()
-	        	elif (randnumber2 == 2):
-					playsound("sudo aplay -q /opt/ninja/drivers/tripwire_driver/sounds/standby2.wav");
-					standbymode()
-	        	elif (randnumber2 == 3):
-					playsound("sudo aplay -q /opt/ninja/drivers/tripwire_driver/sounds/standby3.wav");
-					standbymode()	
-	        	elif (randnumber2 == 4):
-					playsound("sudo aplay -q /opt/ninja/drivers/tripwire_driver/sounds/standby4.wav");
-					standbymode()
+  
+	       
 	        	
 
 #####################################MAIN####################################### 
