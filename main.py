@@ -49,6 +49,7 @@ def laseroff():
 
 
 def standbymode():
+    laseroff()
     pickle.dump( "Disarmed", open( "/opt/ninja/drivers/save.p", "wb" ) )
     print "Standby Mode"
 
@@ -138,7 +139,7 @@ def AlignLaser(): # align lasers
 	while True:
 	    laseron() # turn laser on pin #17
 	    if (playchirps > 0): ## makes sure sound is only played once
-	        playsound("sudo aplay -q /opt/ninja/drivers/tripwire_driver/sounds/align_instruction.wav");
+	        #playsound("sudo aplay -q /opt/ninja/drivers/tripwire_driver/sounds/align_instruction.wav");
 	        playchirps = playchirps - 1
 	    # delare variable
 	 
