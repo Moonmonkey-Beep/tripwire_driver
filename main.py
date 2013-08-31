@@ -46,7 +46,8 @@ def laseron():
 def laseroff():
     GPIO.setup(17, GPIO.OUT) ##Setup Laser
     GPIO.output(17, False) ## Laser on
-    
+
+
 def standbymode():
     pickle.dump( "Disarmed", open( "/opt/ninja/drivers/save.p", "wb" ) )
     print "Standby Mode"
@@ -172,16 +173,18 @@ randnumber2 = randint(1,4) #Inclusive
  
 if (randnumber2 == 1):
 	playsound("sudo aplay /opt/ninja/drivers/tripwire_driver/sounds/standby1.wav");
-	
+	standbymode()
 elif (randnumber2 == 2):
 	playsound("sudo aplay /opt/ninja/drivers/tripwire_driver/sounds/standby2.wav");
-		
+	standbymode()
 elif (randnumber2 == 3):
-	playsound("sudo aplay /opt/ninja/drivers/tripwire_driver/sounds/standby3.wav");	
+	playsound("sudo aplay /opt/ninja/drivers/tripwire_driver/sounds/standby3.wav");
+	standbymode()	
 elif (randnumber2 == 4):
 	playsound("sudo aplay /opt/ninja/drivers/tripwire_driver/sounds/standby4.wav");
+	standbymode()
 
-standbymode()
+
 	        #time.sleep(1)## wait 1 second so sound can play
 	        
 	        	
