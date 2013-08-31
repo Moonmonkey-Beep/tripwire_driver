@@ -43,7 +43,9 @@ if ( GPIO.input(23) == False ):
 
 if (Count > 50):
 	print "short"
+	print Count
 
 else:
 	print "long"  
+	print Count
 
