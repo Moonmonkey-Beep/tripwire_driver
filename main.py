@@ -82,7 +82,7 @@ def armtripwire():
 
 
 	    if (playchirps > 0): ## makes sure sound is only played once
-	        playsound("sudo aplay -q /opt/ninja/drivers/tripwire_driver/sounds/chirps.wav");
+	        playsound("sudo aplay -q /opt/ninja/drivers/tripwire_driver/sounds/activated1.wav");
 	        playchirps = playchirps - 1
 
 
