@@ -6,6 +6,7 @@ GPIO.setmode(GPIO.BCM)
 GPIO.setup(23, GPIO.IN)
 
 import cPickle as pickle
+from random import randint
 
 
 # Standard setup ends
@@ -141,7 +142,7 @@ def AlignLaser(): # align lasers
 	    if (playchirps > 0): ## makes sure sound is only played once
 	        #playsound("sudo aplay -q /opt/ninja/drivers/tripwire_driver/sounds/align_instruction.wav");
 	        playchirps = playchirps - 1
-	    # delare variable
+
 	 
 	    if (rightcount > 1):
 	            
@@ -149,13 +150,13 @@ def AlignLaser(): # align lasers
 	                playsound("sudo aplay -q /opt/ninja/drivers/tripwire_driver/sounds/beephigh.wav");
 	                #flashled(.15);
 	                rightcount = rightcount - 30 ## this number denotes a strong signal
-	                #print rightcount
+	                print rightcount
 	       
 	            elif (RCtime(18) < 300):## a medium signal
 	                playsound("sudo aplay -q /opt/ninja/drivers/tripwire_driver/sounds/beepmed.wav");
 	                #flashled(.20);
 	                rightcount = rightcount - 20
-	                #print rightcount
+	                print rightcount
 	                
 	   
 	            elif (RCtime(18) < 500):## a poor signal
@@ -166,26 +167,22 @@ def AlignLaser(): # align lasers
 	            #elif (RCtime(18) > 1000):## no signal
 	                #flashled(.25);               
 	    else:
-	        laseroff()
-            from random import randint
-            randnumber2 = randint(1,4) #Inclusive
+	        	laseroff()
+  
+	        	randnumber2 = randint(1,4) #Inclusive
  
-            if (randnumber2 == 1):
-				playsound("sudo aplay -q /opt/ninja/drivers/tripwire_driver/sounds/standby1.wav");
-				standbymode()
-            elif (randnumber2 == 2):
-				playsound("sudo aplay -q /opt/ninja/drivers/tripwire_driver/sounds/standby2.wav");
-				standbymode()
-            elif (randnumber2 == 3):
-				playsound("sudo aplay -q /opt/ninja/drivers/tripwire_driver/sounds/standby3.wav");
-				standbymode()	
-            elif (randnumber2 == 4):
-				playsound("sudo aplay -q /opt/ninja/drivers/tripwire_driver/sounds/standby4.wav");
-				standbymode()
-
-
-	        #time.sleep(1)## wait 1 second so sound can play
-	        
+	        	if (randnumber2 == 1):
+					playsound("sudo aplay -q /opt/ninja/drivers/tripwire_driver/sounds/standby1.wav");
+					standbymode()
+	        	elif (randnumber2 == 2):
+					playsound("sudo aplay -q /opt/ninja/drivers/tripwire_driver/sounds/standby2.wav");
+					standbymode()
+	        	elif (randnumber2 == 3):
+					playsound("sudo aplay -q /opt/ninja/drivers/tripwire_driver/sounds/standby3.wav");
+					standbymode()	
+	        	elif (randnumber2 == 4):
+					playsound("sudo aplay -q /opt/ninja/drivers/tripwire_driver/sounds/standby4.wav");
+					standbymode()
 	        	
 
 #####################################MAIN####################################### 
