@@ -53,6 +53,7 @@ def standbymode():
     laseroff()
     pickle.dump( "Disarmed", open( "/opt/ninja/drivers/save.p", "wb" ) )
     print "Standby Mode"
+    from random import randint
     randnumber2 = randint(1,4) #Inclusive
 
 if (randnumber2 == 1):
