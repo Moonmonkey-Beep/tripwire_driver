@@ -58,16 +58,16 @@ def standbymode():
 
     if (randnumber2 == 1):
 		playsound("sudo aplay -q /opt/ninja/drivers/tripwire_driver/sounds/standby1.wav");
-		standbymode()
+
     elif (randnumber2 == 2):
 		playsound("sudo aplay -q /opt/ninja/drivers/tripwire_driver/sounds/standby2.wav");
-		standbymode()
+
     elif (randnumber2 == 3):
 		playsound("sudo aplay -q /opt/ninja/drivers/tripwire_driver/sounds/standby3.wav");
-		standbymode()	
+
     elif (randnumber2 == 4):
 		playsound("sudo aplay -q /opt/ninja/drivers/tripwire_driver/sounds/standby4.wav");
-		standbymode()
+
 
     while True:
 
