@@ -56,20 +56,20 @@ def standbymode():
     from random import randint
     randnumber2 = randint(1,4) #Inclusive
 
-if (randnumber2 == 1):
-	playsound("sudo aplay -q /opt/ninja/drivers/tripwire_driver/sounds/standby1.wav");
-	standbymode()
-elif (randnumber2 == 2):
-	playsound("sudo aplay -q /opt/ninja/drivers/tripwire_driver/sounds/standby2.wav");
-	standbymode()
-elif (randnumber2 == 3):
-	playsound("sudo aplay -q /opt/ninja/drivers/tripwire_driver/sounds/standby3.wav");
-	standbymode()	
-elif (randnumber2 == 4):
-	playsound("sudo aplay -q /opt/ninja/drivers/tripwire_driver/sounds/standby4.wav");
-	standbymode()
+    if (randnumber2 == 1):
+		playsound("sudo aplay -q /opt/ninja/drivers/tripwire_driver/sounds/standby1.wav");
+		standbymode()
+    elif (randnumber2 == 2):
+		playsound("sudo aplay -q /opt/ninja/drivers/tripwire_driver/sounds/standby2.wav");
+		standbymode()
+    elif (randnumber2 == 3):
+		playsound("sudo aplay -q /opt/ninja/drivers/tripwire_driver/sounds/standby3.wav");
+		standbymode()	
+    elif (randnumber2 == 4):
+		playsound("sudo aplay -q /opt/ninja/drivers/tripwire_driver/sounds/standby4.wav");
+		standbymode()
 
-	while True:
+    while True:
 
 		#flashled(1.5); ## This is when waiting button press to arm system
 			if ( GPIO.input(23) == False ):
