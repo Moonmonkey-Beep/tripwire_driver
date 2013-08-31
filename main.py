@@ -90,16 +90,16 @@ def armtripwire():
 			randnumber = randint(1,4) #Inclusive
 	 
 			if (randnumber == 1):
-				playsound("sudo aplay /opt/ninja/drivers/tripwire_driver/sounds/activated1.wav");
-		
+				playsound("sudo aplay -q /opt/ninja/drivers/tripwire_driver/sounds/activated1.wav");
+				playchirps = playchirps - 1
 			elif (randnumber == 2):
-				playsound("sudo aplay /opt/ninja/drivers/tripwire_driver/sounds/activated2.wav");
-			
+				playsound("sudo aplay -q /opt/ninja/drivers/tripwire_driver/sounds/activated2.wav");
+				playchirps = playchirps - 1
 			elif (randnumber == 3):
-				playsound("sudo aplay /opt/ninja/drivers/tripwire_driver/sounds/activated3.wav");	
+				playsound("sudo aplay -q /opt/ninja/drivers/tripwire_driver/sounds/activated3.wav");				playchirps = playchirps - 1
 			elif (randnumber == 4):
-				playsound("sudo aplay /opt/ninja/drivers/tripwire_driver/sounds/activated4.wav");
-			playchirps = playchirps - 1
+				playsound("sudo aplay -q /opt/ninja/drivers/tripwire_driver/sounds/activated4.wav");
+				playchirps = playchirps - 1
 	        
 	        
 	 
@@ -113,7 +113,7 @@ def armtripwire():
 	        	Alarmcount = Alarmcount - 1
 	  
 	        
-	        playsound("sudo aplay /opt/ninja/drivers/tripwire_driver/sounds/detected.wav");
+	        playsound("sudo aplay -q /opt/ninja/drivers/tripwire_driver/sounds/detected.wav");
 	        #laseroff()
 	
 	    else:
@@ -172,16 +172,16 @@ from random import randint
 randnumber2 = randint(1,4) #Inclusive
  
 if (randnumber2 == 1):
-	playsound("sudo aplay /opt/ninja/drivers/tripwire_driver/sounds/standby1.wav");
+	playsound("sudo aplay -q /opt/ninja/drivers/tripwire_driver/sounds/standby1.wav");
 	standbymode()
 elif (randnumber2 == 2):
-	playsound("sudo aplay /opt/ninja/drivers/tripwire_driver/sounds/standby2.wav");
+	playsound("sudo aplay -q /opt/ninja/drivers/tripwire_driver/sounds/standby2.wav");
 	standbymode()
 elif (randnumber2 == 3):
-	playsound("sudo aplay /opt/ninja/drivers/tripwire_driver/sounds/standby3.wav");
+	playsound("sudo aplay -q /opt/ninja/drivers/tripwire_driver/sounds/standby3.wav");
 	standbymode()	
 elif (randnumber2 == 4):
-	playsound("sudo aplay /opt/ninja/drivers/tripwire_driver/sounds/standby4.wav");
+	playsound("sudo aplay -q /opt/ninja/drivers/tripwire_driver/sounds/standby4.wav");
 	standbymode()
 
 
@@ -191,6 +191,7 @@ elif (randnumber2 == 4):
 
 #####################################MAIN####################################### 
 
+print "running StartSYSTEM"
 laseroff()
 
 
@@ -207,6 +208,5 @@ while True: ## this quickly pulses the laser and checks if a signal is recieved 
                 
     elif (RCtime(18) >1000):## no signal ALIGN LASER
     	AlignLaser() ## calls align laser function (at the top)
-       
     
     
