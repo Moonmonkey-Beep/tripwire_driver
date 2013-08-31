@@ -132,8 +132,7 @@ def armtripwire():
 	  
 	        
 	        playsound("sudo aplay /opt/ninja/drivers/tripwire_driver/sounds/detected.wav");
-	        playsound("sudo aplay /opt/ninja/drivers/tripwire_driver/sounds/detected.wav");
-	        playsound("sudo aplay /opt/ninja/drivers/tripwire_driver/sounds/detected.wav");
+
 
 	        #laseroff()
 	
