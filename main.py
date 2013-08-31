@@ -48,47 +48,6 @@ def laseroff():
     GPIO.setup(17, GPIO.OUT) ##Setup Laser
     GPIO.output(17, False) ## Laser on
 
-def checkalignon():
-
-
-	while True: ## this quickly pulses the laser and checks if a signal is recieved if not recieved triggers setup.
-
-		laseron(); # turn laser on pin #17
-    
-		# delare variable
- 
-    	if (RCtime(18) < 1001): ## signal detected STANDBY MODE
-        	laseroff() # turn laser off
-        	print "aligned"
-        	armtripwire()
-                    
-                
-    	elif (RCtime(18) >1000):## no signal ALIGN LASER
-        	print "not aligned"
-    		AlignLaser() ## calls align laser function (at the top)
-    	laseroff(); # turn laser on pin #17
-
-def checkalignoff():
-
-
-	while True: ## this quickly pulses the laser and checks if a signal is recieved if not recieved triggers setup.
-
-		laseron(); # turn laser on pin #17
-    
-		# delare variable
- 
-    	if (RCtime(18) < 1001): ## signal detected STANDBY MODE
-        	laseroff() # turn laser off
-        	print "aligned"
-        	standbymode()
-                    
-                
-    	elif (RCtime(18) >1000):## no signal ALIGN LASER
-        	print "not aligned"
-    		AlignLaser() ## calls align laser function (at the top)
-    	laseroff(); # turn laser on pin #17
-
-    
 
 def standbymode():
     laseroff()
@@ -118,7 +77,6 @@ def standbymode():
 				armtripwire()    
 	    
 def armtripwire():
-	
 	print "Arming Tripwire"
 	pickle.dump( "Armed", open( "/opt/ninja/drivers/save.p", "wb" ) )
 	playchirps = 1
@@ -235,4 +193,24 @@ def AlignLaser(): # align lasers
 
 #####################################MAIN####################################### 
 
-checkalignoff()
+print "running StartSYSTEM"
+laseroff()
+
+
+while True: ## this quickly pulses the laser and checks if a signal is recieved if not recieved triggers setup.
+
+    laseron(); # turn laser on pin #17
+    
+    # delare variable
+ 
+    if (RCtime(18) < 1001): ## signal detected STANDBY MODE
+        laseroff() # turn laser off
+        print "aligned"
+        standbymode()
+                    
+                
+    elif (RCtime(18) >1000):## no signal ALIGN LASER
+        print "not aligned"
+    	AlignLaser() ## calls align laser function (at the top)
+    
+    
