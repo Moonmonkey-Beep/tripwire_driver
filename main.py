@@ -84,8 +84,21 @@ def armtripwire():
 	
 	
 	    if (playchirps > 0): ## makes sure sound is only played once
-	        playsound("sudo aplay -q /opt/ninja/drivers/tripwire_driver/sounds/chirps.wav");
-	        playchirps = playchirps - 1
+	       
+			from random import randint
+			randnumber = randint(1,4) #Inclusive
+	 
+			if (randnumber == 1):
+				playsound("sudo aplay -q /opt/ninja/drivers/tripwire_driver/sounds/activated1.wav");
+		
+			elif (randnumber == 2):
+				playsound("sudo aplay -q /opt/ninja/drivers/tripwire_driver/sounds/activated2.wav");
+			
+			elif (randnumber == 3):
+				playsound("sudo aplay -q /opt/ninja/drivers/tripwire_driver/sounds/activated3.wav");	
+			elif (randnumber == 4):
+				playsound("sudo aplay -q /opt/ninja/drivers/tripwire_driver/sounds/activated4.wav");
+			playchirps = playchirps - 1
 	        
 	        
 	 
@@ -152,9 +165,23 @@ def AlignLaser(): # align lasers
 	                #flashled(.25);               
 	    else:
 	        laseroff()
-            playsound("sudo aplay -q /opt/ninja/drivers/tripwire_driver/sounds/laser_aligned.wav");
-            playsound("sudo aplay -q /opt/ninja/drivers/tripwire_driver/sounds/ready.wav");
-            standbymode()
+	
+	
+from random import randint
+randnumber = randint(1,4) #Inclusive
+ 
+if (randnumber == 1):
+	playsound("sudo aplay -q /opt/ninja/drivers/tripwire_driver/sounds/standby1.wav");
+	
+elif (randnumber == 2):
+	playsound("sudo aplay -q /opt/ninja/drivers/tripwire_driver/sounds/standby2.wav");
+		
+elif (randnumber == 3):
+	playsound("sudo aplay -q /opt/ninja/drivers/tripwire_driver/sounds/standby3.wav");	
+elif (randnumber == 4):
+	playsound("sudo aplay -q /opt/ninja/drivers/tripwire_driver/sounds/standby4.wav");
+
+standbymode()
 	        #time.sleep(1)## wait 1 second so sound can play
 	        
 	        	
