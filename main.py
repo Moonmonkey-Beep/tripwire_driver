@@ -12,15 +12,13 @@ from random import randint
 # Standard setup ends
 
 def RCtime (RCpin): ## Setup LDR detection
-        reading = 0
-        GPIO.setup(RCpin, GPIO.OUT)
-        GPIO.output(RCpin, GPIO.LOW)
-        time.sleep(0.05)
- 
-        GPIO.setup(RCpin, GPIO.IN)
-        # This takes about 1 millisecond per loop cycle
-        while (GPIO.input(RCpin) == GPIO.LOW):
-                reading += 1
+    reading = 0
+    GPIO.setup(RCpin, GPIO.OUT)
+    GPIO.output(RCpin, GPIO.LOW)
+    time.sleep(0.05)     # adjust speed of reading
+    GPIO.setup(RCpin, GPIO.IN)
+    while (GPIO.input(RCpin) == GPIO.LOW):
+        reading += 1
         return reading
         
 # define function flashing LED - flash rate defined in the call
@@ -54,18 +52,18 @@ def standbymode():
     pickle.dump( "Disarmed", open( "/opt/ninja/drivers/save.p", "wb" ) )
     print "Standby Mode"
     from random import randint
-    randnumber2 = randint(1,4) #Inclusive
+    randnumber = randint(1,4) #Inclusive
 
-    if (randnumber2 == 1):
+    if (randnumber == 1):
 		playsound("sudo aplay /opt/ninja/drivers/tripwire_driver/sounds/standby1.wav");
 
-    elif (randnumber2 == 2):
+    elif (randnumber == 2):
 		playsound("sudo aplay /opt/ninja/drivers/tripwire_driver/sounds/standby2.wav");
 
-    elif (randnumber2 == 3):
+    elif (randnumber == 3):
 		playsound("sudo aplay /opt/ninja/drivers/tripwire_driver/sounds/standby3.wav");
 
-    elif (randnumber2 == 4):
+    elif (randnumber == 4):
 		playsound("sudo aplay /opt/ninja/drivers/tripwire_driver/sounds/standby4.wav");
 
 
@@ -196,7 +194,7 @@ def AlignLaser(): # align lasers
 	    else:
 	        	standbymode()
 
-def mirrorcheckeroff():
+def mirrorchecker():
 	laseroff()
 
 		 ## this quickly pulses the laser and checks if a signal is recieved if not recieved triggers setup.
@@ -224,5 +222,5 @@ def mirrorcheckeroff():
 
 print "running StartSYSTEM"
 
-mirrorcheckeroff()
+mirrorchecker()
    
