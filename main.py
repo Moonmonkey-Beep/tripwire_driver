@@ -66,6 +66,7 @@ def checkalignon():
     	elif (RCtime(18) >1000):## no signal ALIGN LASER
         	print "not aligned"
     		AlignLaser() ## calls align laser function (at the top)
+    	laseroff(); # turn laser on pin #17
 
 def checkalignoff():
 
@@ -85,7 +86,7 @@ def checkalignoff():
     	elif (RCtime(18) >1000):## no signal ALIGN LASER
         	print "not aligned"
     		AlignLaser() ## calls align laser function (at the top)
-    
+    	laseroff(); # turn laser on pin #17
 
     
 
@@ -117,7 +118,7 @@ def standbymode():
 				armtripwire()    
 	    
 def armtripwire():
-	checkalignon()
+	
 	print "Arming Tripwire"
 	pickle.dump( "Armed", open( "/opt/ninja/drivers/save.p", "wb" ) )
 	playchirps = 1
