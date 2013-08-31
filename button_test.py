@@ -28,8 +28,7 @@ Count = 100 ## how many times to play the alarm when triggered (makes sure Ninja
 
 #flashled(1.5); ## This is when waiting button press to arm system
 if ( GPIO.input(23) == False ):
-		playsound("sudo aplay -q /opt/ninja/drivers/tripwire_driver/sounds/button.wav");       
-		armtripwire()    
+ 
 		
 		while True:
 
