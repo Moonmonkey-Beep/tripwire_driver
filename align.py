@@ -68,5 +68,5 @@ def checker():
     		laseroff();
   		laseroff();
 
-while True:
-	checker()  
+
+checker()  
