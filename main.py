@@ -89,15 +89,15 @@ def armtripwire():
 			randnumber = randint(1,4) #Inclusive
 	 
 			if (randnumber == 1):
-				playsound("sudo aplay -q /opt/ninja/drivers/tripwire_driver/sounds/activated1.wav");
+				playsound("sudo aplay /opt/ninja/drivers/tripwire_driver/sounds/activated1.wav");
 		
 			elif (randnumber == 2):
-				playsound("sudo aplay -q /opt/ninja/drivers/tripwire_driver/sounds/activated2.wav");
+				playsound("sudo aplay /opt/ninja/drivers/tripwire_driver/sounds/activated2.wav");
 			
 			elif (randnumber == 3):
-				playsound("sudo aplay -q /opt/ninja/drivers/tripwire_driver/sounds/activated3.wav");	
+				playsound("sudo aplay /opt/ninja/drivers/tripwire_driver/sounds/activated3.wav");	
 			elif (randnumber == 4):
-				playsound("sudo aplay -q /opt/ninja/drivers/tripwire_driver/sounds/activated4.wav");
+				playsound("sudo aplay /opt/ninja/drivers/tripwire_driver/sounds/activated4.wav");
 			playchirps = playchirps - 1
 	        
 	        
@@ -112,12 +112,12 @@ def armtripwire():
 	        	Alarmcount = Alarmcount - 1
 	  
 	        
-	        playsound("sudo aplay -q /opt/ninja/drivers/tripwire_driver/sounds/detected.wav");
+	        playsound("sudo aplay /opt/ninja/drivers/tripwire_driver/sounds/detected.wav");
 	        #laseroff()
 	
 	    else:
 	       if ( GPIO.input(23) == False ):
-	            #print "button pressed"
+	            print "button pressed"
 	            playsound("sudo aplay -q /opt/ninja/drivers/tripwire_driver/sounds/button.wav");
 	            laseroff()
 	            playsound("sudo aplay -q /opt/ninja/drivers/tripwire_driver/sounds/deactivated.wav");
@@ -168,18 +168,18 @@ def AlignLaser(): # align lasers
 	
 	
 from random import randint
-randnumber = randint(1,4) #Inclusive
+randnumber2 = randint(1,4) #Inclusive
  
-if (randnumber == 1):
-	playsound("sudo aplay -q /opt/ninja/drivers/tripwire_driver/sounds/standby1.wav");
+if (randnumber2 == 1):
+	playsound("sudo aplay /opt/ninja/drivers/tripwire_driver/sounds/standby1.wav");
 	
-elif (randnumber == 2):
-	playsound("sudo aplay -q /opt/ninja/drivers/tripwire_driver/sounds/standby2.wav");
+elif (randnumber2 == 2):
+	playsound("sudo aplay /opt/ninja/drivers/tripwire_driver/sounds/standby2.wav");
 		
-elif (randnumber == 3):
-	playsound("sudo aplay -q /opt/ninja/drivers/tripwire_driver/sounds/standby3.wav");	
-elif (randnumber == 4):
-	playsound("sudo aplay -q /opt/ninja/drivers/tripwire_driver/sounds/standby4.wav");
+elif (randnumber2 == 3):
+	playsound("sudo aplay /opt/ninja/drivers/tripwire_driver/sounds/standby3.wav");	
+elif (randnumber2 == 4):
+	playsound("sudo aplay /opt/ninja/drivers/tripwire_driver/sounds/standby4.wav");
 
 standbymode()
 	        #time.sleep(1)## wait 1 second so sound can play
