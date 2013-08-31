@@ -15,7 +15,7 @@ def RCtime (RCpin): ## Setup LDR detection
         reading = 0
         GPIO.setup(RCpin, GPIO.OUT)
         GPIO.output(RCpin, GPIO.LOW)
-        time.sleep(0.1)
+        time.sleep(0.05)
  
         GPIO.setup(RCpin, GPIO.IN)
         # This takes about 1 millisecond per loop cycle
@@ -131,7 +131,7 @@ def armtripwire():
 	        	Alarmcount = Alarmcount - 1
 	  
 	        
-	        playsound("sudo aplay /opt/ninja/drivers/tripwire_driver/sounds/detected.wav");
+	        playsound("sudo -q aplay /opt/ninja/drivers/tripwire_driver/sounds/detected.wav");
 
 
 	        #laseroff()
