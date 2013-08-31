@@ -90,7 +90,8 @@ def armtripwire():
 	       
 			playsound("sudo aplay -q /opt/ninja/drivers/tripwire_driver/sounds/activated1.wav");
 			playchirps = playchirps - 1
-			randnumber = randint(1,4) #Inclusive
+			#randnumber = randint(1,4) #Inclusive
+			randnumber = 1
 	 
 			if (randnumber == 1):
 				playsound("sudo aplay -q /opt/ninja/drivers/tripwire_driver/sounds/activated1.wav");
@@ -171,7 +172,8 @@ def AlignLaser(): # align lasers
 	    else:
 	        	laseroff()
   
-	        	randnumber2 = randint(1,4) #Inclusive
+	        	#randnumber2 = randint(1,4) #Inclusive
+	        	randnumber2 = 1
  
 	        	if (randnumber2 == 1):
 					playsound("sudo aplay -q /opt/ninja/drivers/tripwire_driver/sounds/standby1.wav");
