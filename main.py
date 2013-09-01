@@ -199,21 +199,25 @@ def mirrorchecker():
 
 		 ## this quickly pulses the laser and checks if a signal is recieved if not recieved triggers setup.
 
-	laseron(); # turn laser on pin #17
-	    
-	    # delare variable
-	Lightlevel = RCtime(18)
-	if Lightlevel < 1001: ## signal detected STANDBY MODE
-	        laseroff() # turn laser off
-	        print "Aligned"
-	        print Lightlevel
-	        standbymode()
 
-	                    
-	                
-	elif Lightlevel >1000:## no signal ALIGN LASER
-	        print "Not Aligned"
-	    	AlignLaser() ## calls align laser function (at the top)
+
+	 ## this quickly pulses the laser and checks if a signal is recieved if not recieved triggers setup.
+
+	laseron(); # turn laser on pin #17
+    
+    # delare variable
+ 
+	if (RCtime(18) < 1001): ## signal detected STANDBY MODE
+        	laseroff() # turn laser off
+        	print "aligned"
+        	standbymode()
+        	laseroff();
+                    
+                
+	elif (RCtime(18) >1000):## no signal ALIGN LASER
+        	print "not aligned"
+    		AlignLaser() ## calls align laser function (at the top)
+    		laseroff();
 
 
 	       
