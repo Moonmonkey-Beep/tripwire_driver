@@ -1,6 +1,12 @@
 import RPi.GPIO as GPIO, time, os
 from random import randint
 
+def playsound( str ):
+    bashCommand = str
+    import subprocess
+    process = subprocess.Popen(bashCommand.split(), stdout=subprocess.PIPE)
+    output = process.communicate()[0]
+   
 #####################################MAIN####################################### 
 print "running StartupScript"
 
