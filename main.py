@@ -49,7 +49,15 @@ def laseroff():
 
 def shutdown():
 
-	playsound("sudo aplay /opt/ninja/drivers/tripwire_driver/sounds/deactivated.wav"); 
+	randnumber = randint(1,2) #Inclusive
+
+	if (randnumber == 1):
+		playsound("sudo aplay /opt/ninja/drivers/tripwire_driver/sounds/deactivated1.wav");
+
+	elif (randnumber == 2):
+		playsound("sudo aplay /opt/ninja/drivers/tripwire_driver/sounds/deactivated2.wav");
+
+	laseroff()
 	bashCommand = "sudo halt"
 	os.system(bashCommand)
 
@@ -163,7 +171,20 @@ def AlignLaser(): # align lasers
 	laseroff()
 	pickle.dump( "Align", open( "/opt/ninja/drivers/save.p", "wb" ) )## create a file with zero in it
 	playchirps = 1
-	playsound("sudo aplay /opt/ninja/drivers/tripwire_driver/sounds/error.wav");
+	randnumber = randint(1,4) #Inclusive
+
+	if (randnumber == 1):
+		playsound("sudo aplay /opt/ninja/drivers/tripwire_driver/sounds/error1.wav");
+
+	elif (randnumber == 2):
+		playsound("sudo aplay /opt/ninja/drivers/tripwire_driver/sounds/error2.wav");
+
+	elif (randnumber == 3):
+		playsound("sudo aplay /opt/ninja/drivers/tripwire_driver/sounds/error3.wav");
+		
+	elif (randnumber == 3):
+		playsound("sudo aplay /opt/ninja/drivers/tripwire_driver/sounds/error4.wav");
+			
 	playsound("sudo aplay /opt/ninja/drivers/tripwire_driver/sounds/warmup.wav");
 	
 	rightcount = 150 # this is how long it takes laser to align
