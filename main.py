@@ -5,20 +5,20 @@ import RPi.GPIO as GPIO, time, os
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(23, GPIO.IN)
 
-import cPickle as pickle
-from random import randint
 
 
 # Standard setup ends
 
 def RCtime (RCpin): ## Setup LDR detection
-    reading = 0
-    GPIO.setup(RCpin, GPIO.OUT)
-    GPIO.output(RCpin, GPIO.LOW)
-    time.sleep(0.05)     # adjust speed of reading
-    GPIO.setup(RCpin, GPIO.IN)
-    while (GPIO.input(RCpin) == GPIO.LOW):
-        reading += 1
+        reading = 0
+        GPIO.setup(RCpin, GPIO.OUT)
+        GPIO.output(RCpin, GPIO.LOW)
+        time.sleep(0.05)
+ 
+        GPIO.setup(RCpin, GPIO.IN)
+        # This takes about 1 millisecond per loop cycle
+        while (GPIO.input(RCpin) == GPIO.LOW):
+                reading += 1
         return reading
         
 # define function flashing LED - flash rate defined in the call

@@ -58,12 +58,13 @@ def checker():
 	if (RCtime(18) < 1001): ## signal detected STANDBY MODE
         	laseroff() # turn laser off
         	print "aligned"
-        	#standbymode()
+        	print (RCtime(18)
         	laseroff();
                     
                 
 	elif (RCtime(18) >1000):## no signal ALIGN LASER
         	print "not aligned"
+        	print (RCtime(18)
     		#AlignLaser() ## calls align laser function (at the top)
     		laseroff();
   		laseroff();
