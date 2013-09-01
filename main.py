@@ -47,6 +47,12 @@ def laseroff():
     GPIO.setup(17, GPIO.OUT) ##Setup Laser
     GPIO.output(17, False) ## Laser on
 
+def shutdown():
+
+	playsound("sudo aplay /opt/ninja/drivers/tripwire_driver/sounds/deactivated.wav"); 
+	bashCommand = "sudo halt"
+	os.system(bashCommand)
+
 
 def standbymode():
     laseroff()
@@ -72,7 +78,7 @@ def standbymode():
 
 		#flashled(1.5); ## This is when waiting button press to arm system
 			if ( GPIO.input(23) == False ):
-				playsound("sudo aplay -q /opt/ninja/drivers/tripwire_driver/sounds/button.wav");       
+				playsound("sudo aplay -q /opt/ninja/drivers/tripwire_driver/sounds/buttonup.wav");       
 				armtripwire()    
 	    
 def armtripwire():
@@ -147,9 +153,8 @@ def armtripwire():
 	    else:
 	       if ( GPIO.input(23) == False ):
 	            print "button pressed"
-	            playsound("sudo aplay /opt/ninja/drivers/tripwire_driver/sounds/button.wav");
-	            laseroff()
-	            playsound("sudo aplay /opt/ninja/drivers/tripwire_driver/sounds/deactivated.wav");
+	            playsound("sudo aplay /opt/ninja/drivers/tripwire_driver/sounds/buttondown.wav");
+
 	            standbymode()
     
 # define function  
@@ -158,12 +163,16 @@ def AlignLaser(): # align lasers
 	laseroff()
 	pickle.dump( "Align", open( "/opt/ninja/drivers/save.p", "wb" ) )## create a file with zero in it
 	playchirps = 1
-	playsound("sudo aplay /opt/ninja/drivers/tripwire_driver/sounds/setup.wav");
+	playsound("sudo aplay /opt/ninja/drivers/tripwire_driver/sounds/error.wav");
 	playsound("sudo aplay /opt/ninja/drivers/tripwire_driver/sounds/warmup.wav");
 	
 	rightcount = 150 # this is how long it takes laser to align
 	
-	while True:
+	while True: ## detects if button is pressed during alignment
+	    if ( GPIO.input(23) == False ):
+	        playsound("sudo aplay /opt/ninja/drivers/tripwire_driver/sounds/buttondown.wav");
+	        shutdown()    
+
 	    laseron() # turn laser on pin #17
 	    if (playchirps > 0): ## makes sure sound is only played once
 	        #playsound("sudo aplay -q /opt/ninja/drivers/tripwire_driver/sounds/align_instruction.wav");
