@@ -58,7 +58,7 @@ def shutdown():
 		playsound("sudo aplay /opt/ninja/drivers/tripwire_driver/sounds/deactivated2.wav");
 
 	laseroff()
-	 bashCommand = "sudo halt"
+	bashCommand = "sudo halt"
 	os.system(bashCommand)
 
 
