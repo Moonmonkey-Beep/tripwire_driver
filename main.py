@@ -32,7 +32,7 @@ def flashled( str ):
     
     # define function playing sound - file defined in call
 def playsound( str ):
-    bashCommand = str
+    bashCommand = str % ".wav"
     import subprocess
     process = subprocess.Popen(bashCommand.split(), stdout=subprocess.PIPE)
     output = process.communicate()[0]
@@ -58,6 +58,7 @@ def shutdown():
 		playsound("sudo aplay /opt/ninja/drivers/tripwire_driver/sounds/deactivated2.wav");
 
 	laseroff()
+	GPIO.cleanup()
 	bashCommand = "sudo halt"
 	os.system(bashCommand)
 
