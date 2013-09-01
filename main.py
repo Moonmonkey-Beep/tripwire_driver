@@ -32,8 +32,7 @@ def flashled( str ):
     
     # define function playing sound - file defined in call
 def playsound( str ):
-    earlyCommand = str
-    bashCommand = "poooo" % earlyCommand
+    bashCommand = str
     import subprocess
     process = subprocess.Popen(bashCommand.split(), stdout=subprocess.PIPE)
     output = process.communicate()[0]
