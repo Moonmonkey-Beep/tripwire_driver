@@ -1,26 +1,6 @@
-#####################################SETUP####################################### 
-
-# Standard setup starts
-import RPi.GPIO as GPIO, time, os
-GPIO.setmode(GPIO.BCM)
-GPIO.setup(23, GPIO.IN)
-
-import cPickle as pickle
+button = True
+SensorReading= 10
 from random import randint
-
-# Standard setup ends
-
-def RCtime (RCpin): ## Setup LDR detection
-        reading = 0
-        GPIO.setup(RCpin, GPIO.OUT)
-        GPIO.output(RCpin, GPIO.LOW)
-        time.sleep(0.05)
- 
-        GPIO.setup(RCpin, GPIO.IN)
-        # This takes about 1 millisecond per loop cycle
-        while (GPIO.input(RCpin) == GPIO.LOW):
-                reading += 1
-        return reading
         
 # define function flashing LED - flash rate defined in the call
 def flashled( str ):
@@ -32,20 +12,17 @@ def flashled( str ):
     
     # define function playing sound - file defined in call
 def playsound( str ):
-    bashCommand = str
-    import subprocess
-    process = subprocess.Popen(bashCommand.split(), stdout=subprocess.PIPE)
-    output = process.communicate()[0]
+	print (str)
+
    
 # define function
 def laseron():
-    GPIO.setup(17, GPIO.OUT) ##Setup Laser
-    GPIO.output(17, True) ## Laser on
-   
+	print "laser on"
+   	SensorReading= 1
    # define function
 def laseroff():
-    GPIO.setup(17, GPIO.OUT) ##Setup Laser
-    GPIO.output(17, False) ## Laser on
+    print "laser off"
+    SensorReading= 1000000
 
 def shutdown():
 	randnumber = randint(1,2) #Inclusive
@@ -63,33 +40,41 @@ def shutdown():
 
 def standbymode():
     laseroff()
-    pickle.dump( "Disarmed", open( "/opt/ninja/drivers/save.p", "wb" ) )
+    #pickle.dump( "Disarmed", open( "/opt/ninja/drivers/save.p", "wb" ) )
     print "Standby Mode"
+    from random import randint
+    randnumber = randint(1,4) #Inclusive
 
-    sound = "standby" # The Sound to play
-    randnumber = randint(1,4) #Inclusive, the second figure is the largest file number for this sound
-	
-    randname =  "sudo aplay /opt/ninja/drivers/tripwire_driver/sounds/" + sound + str(randnumber) + ".wav"
-    playsound(randname);
+    if (randnumber == 1):
+		playsound("sudo aplay /opt/ninja/drivers/tripwire_driver/sounds/standby1.wav");
+
+    elif (randnumber == 2):
+		playsound("sudo aplay /opt/ninja/drivers/tripwire_driver/sounds/standby2.wav");
+
+    elif (randnumber == 3):
+		playsound("sudo aplay /opt/ninja/drivers/tripwire_driver/sounds/standby3.wav");
+
+    elif (randnumber == 4):
+		playsound("sudo aplay /opt/ninja/drivers/tripwire_driver/sounds/standby4.wav");
 
 
     while True:
 
 		#flashled(1.5); ## This is when waiting button press to arm system
-			if ( GPIO.input(23) == False ):
+			if ( button == False ):
 				playsound("sudo aplay -q /opt/ninja/drivers/tripwire_driver/sounds/buttonup.wav");       
 				armtripwire()    
 	    
 def armtripwire():
 	print "Arming Tripwire"
-	pickle.dump( "Armed", open( "/opt/ninja/drivers/save.p", "wb" ) )
+	#pickle.dump( "Armed", open( "/opt/ninja/drivers/save.p", "wb" ) )
 	playchirps = 1
 	playsound("sudo aplay -q /opt/ninja/drivers/tripwire_driver/sounds/warmup.wav");
 	laseron(); # turn laser on pin #17
 	
 	##new align code##########
 	
-	if (RCtime(18) >1000):## no signal ALIGN LASER
+	if (SensorReading>1000):## no signal ALIGN LASER
 	        print "Not Aligned"
 	    	AlignLaser() ## calls align laser function (at the top)
 	################
@@ -98,30 +83,47 @@ def armtripwire():
 	Alertlevel = 10000 ## set the base level very high for the first run to prevent false alarms
 	Alarmcount = 0 ## how many times to play the alarm when triggered (makes sure Ninja Cloud detects it)
 	while True:
-
-	    Lightlevel = RCtime(18)
 	
+	    Lightlevel = SensorReading	
+	
+	
+
 	    if (Alarmcount > 0):
-	    	pickle.dump( "Alarm", open( "/opt/ninja/drivers/save.p", "wb" ) )
+	    	#pickle.dump( "Alarm", open( "/opt/ninja/drivers/save.p", "wb" ) )
 	    	print Alarmcount
 	    	Alarmcount = Alarmcount - 1
 	    else:
-	    	pickle.dump( "Armed", open( "/opt/ninja/drivers/save.p", "wb" ) )	    
+	    	#pickle.dump( "Armed", open( "/opt/ninja/drivers/save.p", "wb" ) )
+			print "no alarm"
+
 	    	
-	       
-	    Alertlevel = 2000 ## this is the ammount of darkness which triggers the alarm
-	
+	    if (SensorReading< 200):
+				Alertlevel = SensorReading* 4
+				print Alertlevel
+
+	    	
 	
 	    if (playchirps > 0): ## makes sure sound is only played once
 	       
-			
-			sound = "activated" # The Sound to play
-			randnumber = randint(1,4) #Inclusive, the second figure is the largest file number for this sound
-			
-			randname =  "sudo aplay /opt/ninja/drivers/tripwire_driver/sounds/" + sound + str(randnumber) + ".wav"
-			playsound(randname);
+
 			playchirps = playchirps - 1
-	 	        
+			randnumber = randint(1,4) #Inclusive
+
+	 
+			if (randnumber == 1):
+				playsound("sudo aplay /opt/ninja/drivers/tripwire_driver/sounds/activated1.wav");
+				playchirps = playchirps - 1
+			elif (randnumber == 2):
+				playsound("sudo aplay /opt/ninja/drivers/tripwire_driver/sounds/activated2.wav");
+				playchirps = playchirps - 1
+			elif (randnumber == 3):
+				playsound("sudo aplay /opt/ninja/drivers/tripwire_driver/sounds/activated3.wav");
+				playchirps = playchirps - 1
+			elif (randnumber == 4):
+				playsound("sudo aplay /opt/ninja/drivers/tripwire_driver/sounds/activated4.wav");
+				playchirps = playchirps - 1
+	        
+	        
 	 
 	    if (Lightlevel > Alertlevel):
 	        
@@ -139,7 +141,7 @@ def armtripwire():
 	        #laseroff()
 	
 	    else:
-	       if ( GPIO.input(23) == False ):
+	       if ( button == False ):
 	            print "button pressed"
 	            playsound("sudo aplay /opt/ninja/drivers/tripwire_driver/sounds/buttondown.wav");
 
@@ -149,21 +151,28 @@ def armtripwire():
 def AlignLaser(): # align lasers
 	print "Aligning Tripwire"
 	laseroff()
-	pickle.dump( "Align", open( "/opt/ninja/drivers/save.p", "wb" ) )## create a file with zero in it
+	#pickle.dump( "Align", open( "/opt/ninja/drivers/save.p", "wb" ) )## create a file with zero in it
+	playchirps = 1
+	randnumber = randint(1,4) #Inclusive
 
+	if (randnumber == 1):
+		playsound("sudo aplay /opt/ninja/drivers/tripwire_driver/sounds/error1.wav");
 
-	sound = "error" # The Sound to play
-	randnumber = randint(1,4) #Inclusive, the second figure is the largest file number for this sound
+	elif (randnumber == 2):
+		playsound("sudo aplay /opt/ninja/drivers/tripwire_driver/sounds/error2.wav");
+
+	elif (randnumber == 3):
+		playsound("sudo aplay /opt/ninja/drivers/tripwire_driver/sounds/error3.wav");
 		
-	randname =  "sudo aplay /opt/ninja/drivers/tripwire_driver/sounds/" + sound + str(randnumber) + ".wav"
-	playsound(randname);
+	elif (randnumber == 3):
+		playsound("sudo aplay /opt/ninja/drivers/tripwire_driver/sounds/error4.wav");
 			
 	playsound("sudo aplay /opt/ninja/drivers/tripwire_driver/sounds/warmup.wav");
 	
 	rightcount = 150 # this is how long it takes laser to align
 	
 	while True: ## detects if button is pressed during alignment
-	    if ( GPIO.input(23) == False ):
+	    if (button == False ):
 	        playsound("sudo aplay /opt/ninja/drivers/tripwire_driver/sounds/buttondown.wav");
 	        shutdown()    
 
@@ -175,25 +184,25 @@ def AlignLaser(): # align lasers
 	 
 	    if (rightcount > 1):
 	            
-	            if (RCtime(18) < 200): ## a good signal
+	            if (SensorReading< 200): ## a good signal
 	                playsound("sudo aplay /opt/ninja/drivers/tripwire_driver/sounds/beephigh.wav");
 	                #flashled(.15);
 	                rightcount = rightcount - 30 ## this number denotes a strong signal
 	                print rightcount
 	       
-	            elif (RCtime(18) < 300):## a medium signal
+	            elif (SensorReading< 300):## a medium signal
 	                playsound("sudo aplay /opt/ninja/drivers/tripwire_driver/sounds/beepmed.wav");
 	                #flashled(.20);
 	                rightcount = rightcount - 20
 	                print rightcount
 	                
 	   
-	            elif (RCtime(18) < 500):## a poor signal
+	            elif (SensorReading< 500):## a poor signal
 	                playsound("sudo aplay /opt/ninja/drivers/tripwire_driver/sounds/beeplow.wav");
 	                rightcount = rightcount - 5
 	                print rightcount
 	                
-	            #elif (RCtime(18) > 1000):## no signal
+	            #elif (SensorReading(18) > 1000):## no signal
 	                #flashled(.25);               
 	    else:
 	        	standbymode()
@@ -211,14 +220,16 @@ def mirrorchecker():
     
     # delare variable
  
-	if (RCtime(18) < 1001): ## signal detected STANDBY MODE
+	if (SensorReading< 1001): ## signal detected STANDBY MODE
         	laseroff() # turn laser off
         	print "aligned"
-        	standbymode()
+        	#standbymode()
+        	laseroff() # turn laser off
+        	armtripwire()
         	laseroff();
-                    
                 
-	elif (RCtime(18) >1000):## no signal ALIGN LASER
+                
+	elif (SensorReading>1000):## no signal ALIGN LASER
         	print "not aligned"
     		AlignLaser() ## calls align laser function (at the top)
     		laseroff();
