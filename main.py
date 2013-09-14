@@ -163,7 +163,7 @@ def AlignLaser(): # align lasers
 	rightcount = 150 # this is how long it takes laser to align
 	
 	while True: ## detects if button is pressed during alignment
-	    if ( GPIO.input(23) == False ):
+	    if (GPIO.input(23) == False ):
 	        playsound("sudo aplay /opt/ninja/drivers/tripwire_driver/sounds/buttondown.wav");
 	        shutdown()    
 
@@ -199,6 +199,7 @@ def AlignLaser(): # align lasers
 	        	standbymode()
 
 def mirrorchecker():
+	print "checking if aligned"
 	laseroff()
 
 		 ## this quickly pulses the laser and checks if a signal is recieved if not recieved triggers setup.
@@ -210,7 +211,7 @@ def mirrorchecker():
 	laseron(); # turn laser on pin #17
     
     # delare variable
- 
+ 	print RCtime(18)
 	if (RCtime(18) < 1001): ## signal detected STANDBY MODE
         	laseroff() # turn laser off
         	print "aligned"
