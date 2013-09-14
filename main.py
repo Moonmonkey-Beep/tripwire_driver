@@ -161,13 +161,14 @@ def AlignLaser(): # align lasers
 	playsound("sudo aplay /opt/ninja/drivers/tripwire_driver/sounds/warmup.wav");
 	
 	rightcount = 150 # this is how long it takes laser to align
-	
+	playchirps = 0
 	while True: ## detects if button is pressed during alignment
 	    if (GPIO.input(23) == False ):
 	        playsound("sudo aplay /opt/ninja/drivers/tripwire_driver/sounds/buttondown.wav");
 	        shutdown()    
 
 	    laseron() # turn laser on pin #17
+
 	    if (playchirps > 0): ## makes sure sound is only played once
 	        #playsound("sudo aplay -q /opt/ninja/drivers/tripwire_driver/sounds/align_instruction.wav");
 	        playchirps = playchirps - 1
