@@ -50,6 +50,10 @@ def laseroff():
 def shutdown():
 	randnumber = randint(1,2) #Inclusive
 
+
+	pickle.dump( "Offline", open( "/opt/ninja/drivers/save.p", "wb" ) )
+
+	
 	if (randnumber == 1):
 		playsound("sudo aplay /opt/ninja/drivers/tripwire_driver/sounds/deactivated1.wav");
 
@@ -57,6 +61,7 @@ def shutdown():
 		playsound("sudo aplay /opt/ninja/drivers/tripwire_driver/sounds/deactivated2.wav");
 
 	laseroff()
+	time.sleep(3) 
 	bashCommand = "sudo halt"
 	os.system(bashCommand)
 
