@@ -54,11 +54,10 @@ def shutdown():
 	pickle.dump( "Offline", open( "/opt/ninja/drivers/save.p", "wb" ) )
 
 	
-	if (randnumber == 1):
-		playsound("sudo aplay /opt/ninja/drivers/tripwire_driver/sounds/deactivated1.wav");
 
-	elif (randnumber == 2):
-		playsound("sudo aplay /opt/ninja/drivers/tripwire_driver/sounds/deactivated2.wav");
+	playsound("sudo aplay /opt/ninja/drivers/tripwire_driver/sounds/deactivated1.wav");
+
+
 
 	laseroff()
 	time.sleep(3) 
@@ -72,7 +71,7 @@ def standbymode():
     print "Standby Mode"
 
     sound = "standby" # The Sound to play
-    randnumber = randint(1,4) #Inclusive, the second figure is the largest file number for this sound
+    randnumber = randint(1,2) #Inclusive, the second figure is the largest file number for this sound
 	
     randname =  "sudo aplay /opt/ninja/drivers/tripwire_driver/sounds/" + sound + str(randnumber) + ".wav"
     playsound(randname);
@@ -121,7 +120,7 @@ def armtripwire():
 	       
 			
 			sound = "activated" # The Sound to play
-			randnumber = randint(1,4) #Inclusive, the second figure is the largest file number for this sound
+			randnumber = randint(1,2) #Inclusive, the second figure is the largest file number for this sound
 			
 			randname =  "sudo aplay /opt/ninja/drivers/tripwire_driver/sounds/" + sound + str(randnumber) + ".wav"
 			playsound(randname);
@@ -132,7 +131,7 @@ def armtripwire():
 	        
 	        # this is when intruder is detected
 	        #flashled(.1);  
-	        Alarmcount = 20 ## how many times to play the alarm when triggered (makes sure Ninja Cloud detects it)
+	        Alarmcount = 40 ## how many times to play the alarm when triggered (makes sure Ninja Cloud detects it)
 	        if (Alarmcount >= 0):
 	        	print Alarmcount
 	        	Alarmcount = Alarmcount - 1
@@ -158,7 +157,7 @@ def AlignLaser(): # align lasers
 
 
 	sound = "error" # The Sound to play
-	randnumber = randint(1,4) #Inclusive, the second figure is the largest file number for this sound
+	randnumber = randint(1,2) #Inclusive, the second figure is the largest file number for this sound
 		
 	randname =  "sudo aplay /opt/ninja/drivers/tripwire_driver/sounds/" + sound + str(randnumber) + ".wav"
 	playsound(randname);
