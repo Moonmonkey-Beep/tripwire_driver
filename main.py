@@ -14,7 +14,7 @@ def RCtime (RCpin): ## Setup LDR detection
         reading = 0
         GPIO.setup(RCpin, GPIO.OUT)
         GPIO.output(RCpin, GPIO.LOW)
-        time.sleep(0.05)
+        time.sleep(0.02)
  
         GPIO.setup(RCpin, GPIO.IN)
         # This takes about 1 millisecond per loop cycle
