@@ -107,7 +107,7 @@ def armtripwire():
 	    Lightlevel = RCtime(18)
 	
 	    if (Alarmcount > 0):
-	    	pickle.dump( "Alarm", open( "/opt/ninja/drivers/save.p", "wb" ) )
+	    	pickle.dump( "100", open( "/opt/ninja/drivers/save.p", "wb" ) )
 	    	print Alarmcount
 	    	Alarmcount = Alarmcount - 1
 	    else:
