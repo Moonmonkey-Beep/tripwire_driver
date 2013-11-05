@@ -148,6 +148,12 @@ def armtripwire():
 	            playsound("sudo aplay /opt/ninja/drivers/tripwire_driver/sounds/buttondown.wav");
 
 	            standbymode()
+	       elif ( GPIO.input(23) == False ):
+	            print "PIR Detected"
+	            playsound("sudo aplay /opt/ninja/drivers/tripwire_driver/sounds/pir.wav");
+
+		     
+
     
 # define function  
 def AlignLaser(): # align lasers
@@ -170,7 +176,7 @@ def AlignLaser(): # align lasers
 	    if (GPIO.input(23) == False ):
 	        playsound("sudo aplay /opt/ninja/drivers/tripwire_driver/sounds/buttondown.wav");
 	        shutdown()    
-
+		
 	    laseron() # turn laser on pin #17
 
 	    if (playchirps > 0): ## makes sure sound is only played once
