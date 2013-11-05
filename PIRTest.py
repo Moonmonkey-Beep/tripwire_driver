@@ -22,5 +22,5 @@ def RCtime (RCpin):
         return reading
 
 if True:                                     
-        lightlevel = RCtime(22)   # Read RC timing using pin #18
+        lightlevel = RCtime(22)   # Read RC timing using pin #22
 print lightlevel
