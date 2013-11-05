@@ -77,7 +77,12 @@ def standbymode():
 		#flashled(1.5); ## This is when waiting button press to arm system
 			if ( GPIO.input(23) == False ):
 				playsound("sudo aplay -q /opt/ninja/drivers/tripwire_driver/sounds/buttonup.wav");       
-				armtripwire()    
+				armtripwire()   
+			 
+			elif ( GPIO.input(22) == False ):
+				print "PIR Detected"
+				playsound("sudo aplay /opt/ninja/drivers/tripwire_driver/sounds/pir.wav");
+
 	    
 def armtripwire():
 	print "Arming Tripwire"
