@@ -4,6 +4,7 @@
 import RPi.GPIO as GPIO, time, os
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(23, GPIO.IN)
+GPIO.setup(22, GPIO.IN)
 
 import cPickle as pickle
 from random import randint
@@ -22,13 +23,7 @@ def RCtime (RCpin): ## Setup LDR detection
                 reading += 1
         return reading
         
-# define function flashing LED - flash rate defined in the call
-def flashled( str ):
-    GPIO.setup(22, GPIO.OUT) ##Setup LED
-    GPIO.output(22, True)
-    time.sleep(str)
-    GPIO.output(22, False)
-    time.sleep(str)
+
     
     # define function playing sound - file defined in call
 def playsound( str ):
