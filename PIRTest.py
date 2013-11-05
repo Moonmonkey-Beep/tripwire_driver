@@ -21,6 +21,6 @@ def RCtime (RCpin):
                 reading += 1
         return reading
 
-if True:                                     
+while True:                                     
         lightlevel = RCtime(22)   # Read RC timing using pin #22
-print lightlevel
+	print lightlevel
