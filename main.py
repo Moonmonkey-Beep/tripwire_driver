@@ -149,8 +149,8 @@ def armtripwire():
 
 	            standbymode()
 	       #elif ( GPIO.input(22) == False ):
-	            #print "PIR Detected"
-	            #playsound("sudo aplay /opt/ninja/drivers/tripwire_driver/sounds/pir.wav");
+	            print "PIR Detected"
+	            playsound("sudo aplay /opt/ninja/drivers/tripwire_driver/sounds/pir.wav");
 
 		     
 
@@ -223,14 +223,14 @@ def mirrorchecker():
     
     # delare variable
  	print RCtime(18)
-	if (RCtime(18) < 1001): ## signal detected STANDBY MODE
+	if (RCtime(18) < 601): ## signal detected STANDBY MODE
         	laseroff() # turn laser off
         	print "aligned"
         	standbymode()
         	laseroff();
                     
                 
-	elif (RCtime(18) >1000):## no signal ALIGN LASER
+	elif (RCtime(18) >600):## no signal ALIGN LASER
         	print "not aligned"
     		AlignLaser() ## calls align laser function (at the top)
     		laseroff();
