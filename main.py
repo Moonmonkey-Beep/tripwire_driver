@@ -79,9 +79,9 @@ def standbymode():
 				playsound("sudo aplay -q /opt/ninja/drivers/tripwire_driver/sounds/buttonup.wav");       
 				armtripwire()   
 			 
-			elif ( GPIO.input(22) == False ):
-				print "PIR Detected"
-				playsound("sudo aplay /opt/ninja/drivers/tripwire_driver/sounds/pir.wav");
+			#elif ( GPIO.input(22) == False ):
+				#print "PIR Detected"
+				#playsound("sudo aplay /opt/ninja/drivers/tripwire_driver/sounds/pir.wav");
 
 	    
 def armtripwire():
@@ -148,9 +148,9 @@ def armtripwire():
 	            playsound("sudo aplay /opt/ninja/drivers/tripwire_driver/sounds/buttondown.wav");
 
 	            standbymode()
-	       elif ( GPIO.input(22) == False ):
-	            print "PIR Detected"
-	            playsound("sudo aplay /opt/ninja/drivers/tripwire_driver/sounds/pir.wav");
+	       #elif ( GPIO.input(22) == False ):
+	            #print "PIR Detected"
+	            #playsound("sudo aplay /opt/ninja/drivers/tripwire_driver/sounds/pir.wav");
 
 		     
 
