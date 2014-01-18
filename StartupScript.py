@@ -20,6 +20,6 @@ elif (randnumber == 2):
 		playsound("sudo aplay /opt/ninja/drivers/tripwire_driver/sounds/hello2.wav");
 
 
-bashCommand = "sudo python /opt/ninja/drivers/tripwire_driver/main.py"
-os.system(bashCommand) 
+#bashCommand = "sudo python /opt/ninja/drivers/tripwire_driver/robot.py"
+#os.system(bashCommand) 
 

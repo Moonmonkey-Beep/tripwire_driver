@@ -15,26 +15,6 @@ from random import randint
 
 
 
-
-
-
-
-
-
-
-def RCtime (RCpin): ## Setup LDR detection
-        reading = 0
-        GPIO.setup(RCpin, GPIO.OUT)
-        GPIO.output(RCpin, GPIO.LOW)
-        time.sleep(0.02)
- 
-        GPIO.setup(RCpin, GPIO.IN)
-        # This takes about 1 millisecond per loop cycle
-        while (GPIO.input(RCpin) == GPIO.LOW):
-                reading += 1
-        return reading
-        
-
     
     # define function playing sound - file defined in call
 def playsound( str ):
@@ -85,16 +65,13 @@ def standbymode():
 
     while True:
 
-		#flashled(1.5); ## This is when waiting button press to arm system
+
 			if ( GPIO.input(23) == False ):
-				playsound("sudo aplay -q /opt/ninja/drivers/tripwire_driver/sounds/buttonup.wav");       
+				playsound("sudo aplay -q /opt/ninja/drivers/tripwire_driver/sounds/buttonup.wav");      
+				print "button pressed" 
 				armtripwire()   
 			 
-			#elif ( GPIO.input(22) == False ):
-				#print "PIR Detected"
-				#playsound("sudo aplay /opt/ninja/drivers/tripwire_driver/sounds/pir.wav");
-
-	    
+  
 def armtripwire():
 	print "Arming Tripwire"
 	pickle.dump( "Armed", open( "/opt/ninja/drivers/save.p", "wb" ) )
@@ -186,6 +163,7 @@ def AlignLaser(): # align lasers
 	while True: ## detects if button is pressed during alignment
 	    if (GPIO.input(23) == False ):
 	        playsound("sudo aplay /opt/ninja/drivers/tripwire_driver/sounds/buttondown.wav");
+	        print "button pressed" 
 	        shutdown()    
 		
 	    laseron() # turn laser on pin #17
@@ -254,5 +232,5 @@ def mirrorchecker():
 
 print "running StartSYSTEM"
 
-mirrorchecker()
+standbymode()
    
