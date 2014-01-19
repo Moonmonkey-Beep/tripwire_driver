@@ -39,14 +39,14 @@ def laseroff():
 # define function
 def WeaponArm():
 	print "weapon warm on" 
-	GPIO.setup(22, GPIO.OUT) ##Setup Laser
-	GPIO.output(22, True) ## Laser on
+	GPIO.setup(25, GPIO.OUT) ##Setup Laser
+	GPIO.output(25, True) ## Laser on
    
    # define function
 def WeaponDisarm():
 	print "weapon warm off" 
-	GPIO.setup(22, GPIO.OUT) ##Setup Laser
-	GPIO.output(22, False) ## Laser on
+	GPIO.setup(25, GPIO.OUT) ##Setup Laser
+	GPIO.output(25, False) ## Laser on
 
 def Attack():
 	WeaponArm()
