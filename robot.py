@@ -35,18 +35,26 @@ def laseroff():
 	GPIO.setup(17, GPIO.OUT) ##Setup Laser
 	GPIO.output(17, False) ## Laser on
 
+	   # define function
+def FaceSpotted():
+	print "face Identified" 
+	sound = "spotted" # The Sound to play
+	randnumber = randint(1,3) #Inclusive, the second figure is the largest file number for this sound
+	randname =  "sudo aplay /opt/ninja/drivers/tripwire_driver/sounds/" + sound + str(randnumber) + ".wav"
+	playsound(randname);
+	WeaponWarm()
+	time.sleep(2)
+	WeaponFire()
+
 
 # define function
-def WeaponArm():
+def WeaponWarm():
 	print "weapon warm on" 
 	GPIO.setup(4, GPIO.OUT) ##Setup Laser
 	GPIO.output(4, False) ## Laser on
    
    # define function
-def WeaponDisarm():
-	print "weapon warm off" 
-	GPIO.setup(4, GPIO.OUT) ##Setup Laser
-	GPIO.output(4, True) ## Laser on
+
 	
 def WeaponFire():
 	print "weapon fire" 
