@@ -91,7 +91,7 @@ def standbymode():
 			if ( GPIO.input(23) == False ):
 				playsound("sudo aplay -q /opt/ninja/drivers/tripwire_driver/sounds/buttonup.wav");      
 				print "button pressed" 
-	 			WeaponArm()
+	 			laseron()
 
 #####################################MAIN####################################### 
 
