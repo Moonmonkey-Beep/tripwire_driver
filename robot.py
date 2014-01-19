@@ -44,7 +44,7 @@ def FaceSpotted():
 	playsound(randname);
 	WeaponWarm()
 	time.sleep(2)
-	WeaponFire()
+	WeaponSingleFire()
 
 
 # define function
@@ -56,13 +56,13 @@ def WeaponWarm():
    # define function
 
 	
-def WeaponFire():
+def WeaponSingleFire():
 	print "weapon fire" 
-	playsound("sudo aplay /opt/ninja/drivers/tripwire_driver/sounds/fire.wav");
 
 	GPIO.setup(22, GPIO.OUT) ##Trigger
 	GPIO.output(22, False) ## Trigger
-	time.sleep(1) 
+	playsound("sudo aplay /opt/ninja/drivers/tripwire_driver/sounds/fire.wav");
+	time.sleep(.5) 
 	GPIO.output(22, True) ## trigger off
 	GPIO.output(4, True) ## warmup off		
 	
