@@ -39,7 +39,7 @@ def laseroff():
 def FaceSpotted():
 	print "face Identified" 
 	sound = "spotted" # The Sound to play
-	randnumber = randint(1,3) #Inclusive, the second figure is the largest file number for this sound
+	randnumber = randint(1,4) #Inclusive, the second figure is the largest file number for this sound
 	randname =  "sudo aplay /opt/ninja/drivers/tripwire_driver/sounds/" + sound + str(randnumber) + ".wav"
 	playsound(randname);
 	WeaponWarm()
@@ -58,20 +58,15 @@ def WeaponWarm():
 	
 def WeaponFire():
 	print "weapon fire" 
+	playsound("sudo aplay /opt/ninja/drivers/tripwire_driver/sounds/fire.wav");
+
 	GPIO.setup(22, GPIO.OUT) ##Trigger
 	GPIO.output(22, False) ## Trigger
 	time.sleep(1) 
 	GPIO.output(22, True) ## trigger off
 	GPIO.output(4, True) ## warmup off		
 	
-def Attack():
-	playsound("sudo aplay /opt/ninja/drivers/tripwire_driver/sounds/detected.wav");
-	laseron()
-	WeaponWarm()
-	time.sleep(3) 
-	WeaponFire()
 
-		
 
 def shutdown():
 	randnumber = randint(1,2) #Inclusive
@@ -79,11 +74,7 @@ def shutdown():
 
 	pickle.dump( "Offline", open( "/opt/ninja/drivers/save.p", "wb" ) )
 
-	
-
 	playsound("sudo aplay /opt/ninja/drivers/tripwire_driver/sounds/deactivated1.wav");
-
-
 
 	laseroff()
 	time.sleep(3) 
@@ -109,7 +100,7 @@ def standbymode():
 			if ( GPIO.input(23) == False ):
 				playsound("sudo aplay -q /opt/ninja/drivers/tripwire_driver/sounds/buttonup.wav");      
 				print "button pressed" 
-	 			Attack()
+	 			FaceSpotted()
 
 #####################################MAIN####################################### 
 
