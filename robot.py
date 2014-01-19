@@ -25,29 +25,34 @@ def playsound( str ):
    
 # define function
 def laseron():
+	print "laser on" 
     GPIO.setup(17, GPIO.OUT) ##Setup Laser
     GPIO.output(17, True) ## Laser on
    
    # define function
 def laseroff():
+	print "laser off" 
     GPIO.setup(17, GPIO.OUT) ##Setup Laser
     GPIO.output(17, False) ## Laser on
 
 
 # define function
 def WeaponArm():
+	print "weapon warm on" 
     GPIO.setup(22, GPIO.OUT) ##Setup Laser
     GPIO.output(22, True) ## Laser on
    
    # define function
 def WeaponDisarm():
+	print "weapon warm off" 
     GPIO.setup(22, GPIO.OUT) ##Setup Laser
     GPIO.output(22, False) ## Laser on
 
 def Attack():
-	playsound("sudo aplay /opt/ninja/drivers/tripwire_driver/sounds/detected.wav");
 	WeaponArm()
 	laseron()
+	playsound("sudo aplay /opt/ninja/drivers/tripwire_driver/sounds/detected.wav");
+
 		
 
 def shutdown():
