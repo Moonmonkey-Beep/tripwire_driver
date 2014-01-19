@@ -47,11 +47,21 @@ def WeaponDisarm():
 	print "weapon warm off" 
 	GPIO.setup(4, GPIO.OUT) ##Setup Laser
 	GPIO.output(4, True) ## Laser on
-
+	
+def WeaponFire():
+	print "weapon fire" 
+	GPIO.setup(22, GPIO.OUT) ##Setup Laser
+	GPIO.output(22, False) ## Laser on
+	time.sleep(3) 
+	GPIO.output(22, True) ## Laser on
+			
+	
 def Attack():
-	WeaponArm()
-	laseron()
 	playsound("sudo aplay /opt/ninja/drivers/tripwire_driver/sounds/detected.wav");
+	laseron()
+	WeaponArm()
+	time.sleep(3) 
+	WeaponFire()
 
 		
 
