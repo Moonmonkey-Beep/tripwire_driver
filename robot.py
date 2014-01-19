@@ -39,14 +39,14 @@ def laseroff():
 # define function
 def WeaponArm():
 	print "weapon warm on" 
-	GPIO.setup(25, GPIO.OUT) ##Setup Laser
-	GPIO.output(25, True) ## Laser on
+	GPIO.setup(4, GPIO.OUT) ##Setup Laser
+	GPIO.output(4, True) ## Laser on
    
    # define function
 def WeaponDisarm():
 	print "weapon warm off" 
-	GPIO.setup(25, GPIO.OUT) ##Setup Laser
-	GPIO.output(25, False) ## Laser on
+	GPIO.setup(4, GPIO.OUT) ##Setup Laser
+	GPIO.output(4, False) ## Laser on
 
 def Attack():
 	WeaponArm()
@@ -91,7 +91,7 @@ def standbymode():
 			if ( GPIO.input(23) == False ):
 				playsound("sudo aplay -q /opt/ninja/drivers/tripwire_driver/sounds/buttonup.wav");      
 				print "button pressed" 
-	 			Attack()
+	 			WeaponArm()
 
 #####################################MAIN####################################### 
 
