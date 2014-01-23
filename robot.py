@@ -45,6 +45,7 @@ def FaceSpotted():
 	WeaponWarm()
 	time.sleep(2)
 	WeaponSingleFire()
+	left()
 
 
 # define function
@@ -66,11 +67,11 @@ def WeaponSingleFire():
 	GPIO.output(22, True) ## trigger off
 	GPIO.output(4, True) ## warmup off		
 	
-	def left():
-		GPIO.output(25, True) ## trigger off
-		print "left"
-		time.sleep(2) 
-		GPIO.output(25, False) ## trigger off
+def left():
+	GPIO.output(25, True) ## trigger off
+	print "left"
+	time.sleep(2) 
+	GPIO.output(25, False) ## trigger off
 		
 def shutdown():
 	randnumber = randint(1,2) #Inclusive
