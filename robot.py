@@ -62,12 +62,16 @@ def WeaponSingleFire():
 	GPIO.setup(22, GPIO.OUT) ##Trigger
 	GPIO.output(22, False) ## Trigger
 	playsound("sudo aplay /opt/ninja/drivers/tripwire_driver/sounds/fire.wav");
-	time.sleep(.5) 
+	time.sleep(.25) 
 	GPIO.output(22, True) ## trigger off
 	GPIO.output(4, True) ## warmup off		
 	
-
-
+	def left():
+		GPIO.output(25, True) ## trigger off
+		print "left"
+		time.sleep(2) 
+		GPIO.output(25, False) ## trigger off
+		
 def shutdown():
 	randnumber = randint(1,2) #Inclusive
 
