@@ -67,7 +67,9 @@ def WeaponSingleFire():
 	GPIO.output(22, True) ## trigger off
 	GPIO.output(4, True) ## warmup off		
 	
+
 def left():
+	GPIO.setup(25, GPIO.OUT) ##Trigger
 	GPIO.output(25, True) ## trigger off
 	print "left"
 	time.sleep(2) 
