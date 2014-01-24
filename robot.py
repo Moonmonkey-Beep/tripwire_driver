@@ -68,13 +68,35 @@ def WeaponSingleFire():
 	GPIO.output(4, True) ## warmup off		
 	
 
-def left():
+def LeftForward():
+	GPIO.setup(24, GPIO.OUT) ##Trigger
+	GPIO.output(24, True) ## trigger off
+	print "leftF"
+	time.sleep(2) 
+	GPIO.output(24, False) ## trigger off
+	
+def leftBackward():
 	GPIO.setup(25, GPIO.OUT) ##Trigger
 	GPIO.output(25, True) ## trigger off
-	print "left"
+	print "leftB"
 	time.sleep(2) 
 	GPIO.output(25, False) ## trigger off
 		
+		
+def RightForward():
+	GPIO.setup(26, GPIO.OUT) ##Trigger
+	GPIO.output(26, True) ## trigger off
+	print "leftF"
+	time.sleep(2) 
+	GPIO.output(26, False) ## trigger off
+	
+def RightBackward():
+	GPIO.setup(27, GPIO.OUT) ##Trigger
+	GPIO.output(27, True) ## trigger off
+	print "leftB"
+	time.sleep(2) 
+	GPIO.output(27, False) ## trigger off
+			
 def shutdown():
 	randnumber = randint(1,2) #Inclusive
 
