@@ -45,7 +45,13 @@ def FaceSpotted():
 	WeaponWarm()
 	time.sleep(2)
 	WeaponSingleFire()
-	left()
+	LeftForward()
+	time.sleep(1)
+	LeftBackward()
+	time.sleep(1)
+	RightForward()
+	time.sleep(1)
+	RightBackward()
 
 
 # define function
