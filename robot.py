@@ -73,18 +73,18 @@ def leftBackward():
 		
 		
 def RightForward():
-	GPIO.setup(26, GPIO.OUT) ##Trigger
-	GPIO.output(26, True) ## trigger off
-	print "leftF"
+	GPIO.setup(18, GPIO.OUT) ##Trigger
+	GPIO.output(18, True) ## trigger off
+	print "RightF"
 	time.sleep(2) 
-	GPIO.output(26, False) ## trigger off
+	GPIO.output(18, False) ## trigger off
 	
 def RightBackward():
-	GPIO.setup(27, GPIO.OUT) ##Trigger
-	GPIO.output(27, True) ## trigger off
-	print "leftB"
+	GPIO.setup(16, GPIO.OUT) ##Trigger
+	GPIO.output(16, True) ## trigger off
+	print "RightB"
 	time.sleep(2) 
-	GPIO.output(27, False) ## trigger off
+	GPIO.output(16, False) ## trigger off
 
 	   # define function
 def FaceSpotted():
