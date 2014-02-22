@@ -1,7 +1,7 @@
 import RPi.GPIO as GPIO
 import time
 
-pin = 17
+pin = 7
 refresh_period = 0.02
 
 GPIO.setmode(GPIO.BCM)
