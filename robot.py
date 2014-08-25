@@ -93,6 +93,8 @@ def RightBackward():
 	GPIO.output(15, False) ## trigger off
 
 	   # define function
+	#get the laser working!!
+	
 def FaceSpotted():
 	print "face Identified" 
 	sound = "spotted" # The Sound to play
