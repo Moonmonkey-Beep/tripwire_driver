@@ -7,7 +7,7 @@ from random import randint
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(4, GPIO.OUT) ##Setup Weapon Warm
 GPIO.setup(15, GPIO.OUT) ##setup right wheel backward
-GPIO.setup(21, GPIO.OUT) ##Setup Laser
+GPIO.setup(17, GPIO.OUT) ##Setup Laser
 GPIO.setup(18, GPIO.OUT) ##setup right wheel forward
 GPIO.setup(22, GPIO.OUT) ##Setup Trigger
 GPIO.setup(23, GPIO.IN) ##Setup Button 1
@@ -26,12 +26,12 @@ def playsound( str ):
 # define function
 def laseron():
 	print "laser on" 
-	GPIO.output(21, True) ## pin on
+	GPIO.output(17, True) ## pin on
    
    # define function
 def laseroff():
 	print "laser off" 
-	GPIO.output(21, False) ## pin off
+	GPIO.output(17, False) ## pin off
 
 
 # define function
