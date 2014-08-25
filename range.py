@@ -8,7 +8,7 @@ GPIO.setmode(GPIO.BCM)
 while True:
 
 		def laseron():
-			GPIO.setup(17, GPIO.OUT) ##Setup Laser
-			GPIO.output(17, True) ## Laser on
+			GPIO.setup(9, GPIO.OUT) ##Setup Laser
+			GPIO.output(9, True) ## Laser on
 
 
