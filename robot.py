@@ -26,12 +26,12 @@ def playsound( str ):
 # define function
 def laseron():
 	print "laser on" 
-	GPIO.output(17, True) ## pin on
+	GPIO.output(17, False) ## pin on
    
    # define function
 def laseroff():
 	print "laser off" 
-	GPIO.output(17, False) ## pin off
+	GPIO.output(17, True) ## pin off
 
 
 # define function
