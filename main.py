@@ -12,17 +12,7 @@ from random import randint
 # Standard setup ends
 
 
-
-
-
-
-
-
-
-
-
-
-def RCtime (RCpin): ## Setup LDR detection
+ef RCtime (RCpin): ## Setup LDR detection
         reading = 0
         GPIO.setup(RCpin, GPIO.OUT)
         GPIO.output(RCpin, GPIO.LOW)
@@ -78,7 +68,6 @@ def standbymode():
 
     sound = "standby" # The Sound to play
     randnumber = randint(1,2) #Inclusive, the second figure is the largest file number for this sound
-	
     randname =  "sudo aplay /opt/ninja/drivers/tripwire_driver/sounds/" + sound + str(randnumber) + ".wav"
     playsound(randname);
 

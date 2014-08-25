@@ -2,20 +2,20 @@
 
 # Standard setup starts
 import RPi.GPIO as GPIO, time, os
-GPIO.setmode(GPIO.BCM)
-GPIO.setup(23, GPIO.IN)
-
-
 import cPickle as pickle
 from random import randint
+GPIO.setmode(GPIO.BCM)
+GPIO.setup(4, GPIO.OUT) ##Setup Weapon Warm
+GPIO.setup(15, GPIO.OUT) ##setup right wheel backward
+GPIO.setup(17, GPIO.OUT) ##Setup Laser
+GPIO.setup(18, GPIO.OUT) ##setup right wheel forward
+GPIO.setup(22, GPIO.OUT) ##Setup Trigger
+GPIO.setup(23, GPIO.IN) ##Setup Button 1
+GPIO.setup(24, GPIO.OUT) ##setup left wheel forward
+GPIO.setup(25, GPIO.OUT) ##setup left wheel backward
 
 # Standard setup ends
-
-
-
-
-
-    
+   
     # define function playing sound - file defined in call
 def playsound( str ):
     bashCommand = str
@@ -26,61 +26,67 @@ def playsound( str ):
 # define function
 def laseron():
 	print "laser on" 
-	GPIO.setup(17, GPIO.OUT) ##Setup Laser
-	GPIO.output(17, False) ## Laser on
+	GPIO.output(17, True) ## pin on
    
    # define function
 def laseroff():
 	print "laser off" 
-	GPIO.setup(17, GPIO.OUT) ##Setup Laser
-	GPIO.output(17, False) ## Laser on
-
+	GPIO.output(17, False) ## pin off
 
 
 # define function
 def WeaponWarm():
 	print "weapon warm on" 
-	GPIO.setup(4, GPIO.OUT) ##Setup Laser
-	GPIO.output(4, False) ## Laser on
+	GPIO.output(4, True) ## pin on
    
    # define function
 
 	
 def WeaponSingleFire():
-	print "weapon fire" 
-
-	GPIO.setup(22, GPIO.OUT) ##Trigger
-	GPIO.output(22, False) ## Trigger
+	print "weapon fire (Single)" 
+	GPIO.output(22, False) ## Trigger note this is invetered - true is off
 	playsound("sudo aplay /opt/ninja/drivers/tripwire_driver/sounds/fire.wav");
 	time.sleep(.25) 
-	GPIO.output(22, True) ## trigger off
-	GPIO.output(4, True) ## warmup off		
-	
+	GPIO.output(22, True) ## trigger off note this is invetered - true is off
+	GPIO.output(4, True) ## warmup off	 note this is invetered - true is off	
 
-def LeftForward():
-	GPIO.setup(24, GPIO.OUT) ##Trigger
-	GPIO.output(24, True) ## trigger off
+def WeaponFullAuto():
+	print "weapon fire (Auto)" 
+	GPIO.output(22, False) ## Trigger note this is invetered - true is off
+	playsound("sudo aplay /opt/ninja/drivers/tripwire_driver/sounds/fire.wav");
+	time.sleep(8) 
+	GPIO.output(22, True) ## trigger off note this is invetered - true is off
+	GPIO.output(4, True) ## warmup off	note this is invetered - true is off 
+			
+
+
+def Forward():
+	GPIO.output(24, True) ## trigger off note this is invetered - true is off
+	GPIO.output(18, True) ## trigger off note this is invetered - true is off
 	print "leftF"
 	time.sleep(2) 
-	GPIO.output(24, False) ## trigger off
+	GPIO.output(24, False) ## trigger off note this is invetered - true is off
+	GPIO.output(18, False) ## trigger off note this is invetered - true is off
+		
+def LeftForward():
+	GPIO.output(24, True) ## trigger off note this is invetered - true is off
+	print "leftF"
+	time.sleep(2) 
+	GPIO.output(24, False) ## trigger off note this is invetered - true is off
 	
 def leftBackward():
-	GPIO.setup(25, GPIO.OUT) ##Trigger
-	GPIO.output(25, True) ## trigger off
+	GPIO.output(25, True) ## trigger off note this is invetered - true is off
 	print "leftB"
 	time.sleep(2) 
-	GPIO.output(25, False) ## trigger off
-		
+	GPIO.output(25, False) ## trigger off note this is invetered - true is off
 		
 def RightForward():
-	GPIO.setup(18, GPIO.OUT) ##Trigger
-	GPIO.output(18, True) ## trigger off
+	GPIO.output(18, True) ## trigger off note this is invetered - true is off
 	print "RightF"
 	time.sleep(2) 
-	GPIO.output(18, False) ## trigger off
-	
+	GPIO.output(18, False) ## trigger off note this is invetered - true is off
+
 def RightBackward():
-	GPIO.setup(15, GPIO.OUT) ##Trigger
 	GPIO.output(15, True) ## trigger off
 	print "RightB"
 	time.sleep(2) 
@@ -93,6 +99,7 @@ def FaceSpotted():
 	randnumber = randint(1,4) #Inclusive, the second figure is the largest file number for this sound
 	randname =  "sudo aplay /opt/ninja/drivers/tripwire_driver/sounds/" + sound + str(randnumber) + ".wav"
 	playsound(randname);
+	laseron()
 	WeaponWarm()
 	time.sleep(2)
 	WeaponSingleFire()
