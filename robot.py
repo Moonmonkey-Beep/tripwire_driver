@@ -13,6 +13,8 @@ GPIO.setup(22, GPIO.OUT) ##Setup Trigger
 GPIO.setup(23, GPIO.IN) ##Setup Button 1
 GPIO.setup(24, GPIO.OUT) ##setup left wheel forward
 GPIO.setup(25, GPIO.OUT) ##setup left wheel backward
+GPIO.setup(17, GPIO.OUT) ##Setup GPIO - is 17 not wokring?????
+
 
 # Standard setup ends
    
@@ -27,7 +29,8 @@ def playsound( str ):
 def laseron():
 	print "laser on" 
 	GPIO.output(27, True) ## pin on
-   
+   GPIO.output(17, True) ## pin on
+  
    # define function
 def laseroff():
 	print "laser off" 
